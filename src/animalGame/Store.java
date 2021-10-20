@@ -28,7 +28,7 @@ public class Store {
     public void Welcome() {
         System.out.println("Hey Welcome to  our store");
         System.out.println("Would You Like to Buy?: ");
-        System.out.println("1. Animal      2. Food");
+        System.out.println("1. Animal      ");
         int val = sc.nextInt();
 
         switch (val){
