@@ -9,5 +9,5 @@ public class StartGame {
         new Game();
     }
 
-    // Uppdatering
+    // Jag gör ett nytt försök...
 }
