@@ -92,8 +92,6 @@ public class Game {
 
                 switch (val) {
                     case 1:
-                        System.out.println("Option 1");
-
                         store = new Store(this.player);
                         store.Welcome();
 
