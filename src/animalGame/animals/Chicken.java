@@ -1,4 +1,4 @@
-package animalgame.animals;
+package animalGame.animals;
 
 import animalGame.animals.models.Animal;
 
@@ -40,6 +40,16 @@ public class Chicken implements Animal {
     @Override
     public void isDead() {
         System.out.println("Your chicken is dead... \n Sorry");
+    }
+
+    @Override
+    public void setGender(String gender) {
+
+    }
+
+    @Override
+    public String getGender() {
+        return null;
     }
 }
 
