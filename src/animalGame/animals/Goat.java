@@ -16,7 +16,7 @@ public class Goat implements Animal {
 
 
     @Override
-    public void healthDeclinje() {
+    public void healthDecline() {
 
     }
 

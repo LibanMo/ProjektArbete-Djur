@@ -18,7 +18,7 @@ public class Horse implements Animal {
 
 
     @Override
-    public void healthDeclinje() {
+    public void healthDecline() {
 
     }
 

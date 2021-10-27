@@ -19,7 +19,7 @@ public class Chicken implements Animal {
     }
 
     @Override
-    public void healthDeclinje() {
+    public void healthDecline() {
         Random random = new Random();
         int choice = random.nextInt(3)+ 1;
         switch(choice){

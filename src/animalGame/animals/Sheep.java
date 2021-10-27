@@ -15,7 +15,7 @@ public class Sheep implements Animal {
     }
 
     @Override
-    public void healthDeclinje() {
+    public void healthDecline() {
 
     }
 
