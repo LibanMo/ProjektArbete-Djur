@@ -15,6 +15,13 @@ public class Sheep implements Animal {
     }
 
     @Override
+    public void healthDeclinje() {
+
+    }
+
+    @Override
+
+    // Djurets Hälsa skav visas med denna metod
     public void health() {
 
     }

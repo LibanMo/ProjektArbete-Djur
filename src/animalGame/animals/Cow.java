@@ -16,6 +16,11 @@ public class Cow implements Animal {
 
 
     @Override
+    public void healthDeclinje() {
+
+    }
+
+    @Override
     public void health() {
 
     }
