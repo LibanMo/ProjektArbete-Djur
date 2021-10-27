@@ -57,6 +57,12 @@ public class Chicken implements Animal {
     @Override
     public void proCreate() {
 
+        Random random = new Random();
+        int choice = random.nextInt(2)+ 1;
+        switch (choice){
+            case 1:
+                System.out.println("No baby this time sorry...");
+        }
     }
 
     @Override

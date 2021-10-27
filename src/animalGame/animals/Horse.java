@@ -17,10 +17,14 @@ public class Horse implements Animal {
     }
 
 
+    @Override
+    public void healthDeclinje() {
+
+    }
 
     @Override
     public void health() {
-
+        System.out.println(health + "%");
     }
 
     @Override
