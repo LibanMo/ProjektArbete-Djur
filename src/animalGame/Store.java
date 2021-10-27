@@ -1,7 +1,6 @@
 package animalGame;
 
-import animalGame.animals.Chicken;
-import animalGame.animals.Horse;
+import animalGame.animals.*;
 
 import java.util.Scanner;
 
@@ -17,6 +16,9 @@ public class Store {
     int cardScan;
     Horse horse;
     Chicken chicken;
+    Cow cow;
+    Sheep sheep;
+    Goat goat;
 
 
 
@@ -39,14 +41,13 @@ public class Store {
     public void Welcome() {
         System.out.println("Hey Welcome to  our store");
         System.out.println("Would You Like to Buy?: ");
-        System.out.println("1. Animal      ");
+        System.out.println("1. Chicken     2. Horse     3. Cow     4. Goat     5. Sheep");
+
         int val = sc.nextInt();
 
         switch (val){
             case 1:
-                System.out.println("The animal game.animals u can buy");
-                System.out.println("1. Chicken     2. Horse");
-                val = sc.nextInt();
+
 
 
                 switch (val){
@@ -98,13 +99,75 @@ public class Store {
                             System.out.println("New Balance: " + player.cash);
                         }
                         break;
+
+
+                    case 3:
+                        System.out.println("The Cow costs 400");
+                        thePrice = 400;
+                        cardScan = player.cash;
+
+                        if(thePrice > cardScan){
+                            System.out.println("The card got declined");
+                        }
+                        else{
+
+                            System.out.println("Name your Cow");
+                            String name = sc.nextLine();
+                            cow = new Cow(name);
+                            System.out.println("Gender of your horse  1. Boy    2. Girl");
+                            int gender = sc.nextInt();
+                            switch(gender){
+                                case 1:
+                                    cow.setGender("Boy");
+                                    break;
+
+                                case 2:
+
+                                    cow.setGender("Girl");
+                                    break;
+                            }
+
+                            player.cash -= thePrice;
+                            System.out.println("New Balance: " + player.cash);
+                        }
+                        break;
+
+
+                    case 4:
+                        System.out.println("The Goat costs 300");
+                        thePrice = 300;
+                        cardScan = player.cash;
+
+                        if(thePrice > cardScan){
+                            System.out.println("The card got declined");
+                        }
+                        else{
+
+                            System.out.println("Name your Goat");
+                            String name = sc.nextLine();
+                            goat = new Goat(name);
+                            System.out.println("Gender of your horse  1. Boy    2. Girl");
+                            int gender = sc.nextInt();
+                            switch(gender){
+                                case 1:
+                                    goat.setGender("Boy");
+                                    break;
+
+                                case 2:
+
+                                    goat.setGender("Girl");
+                                    break;
+                            }
+
+                            player.cash -= thePrice;
+                            System.out.println("New Balance: " + player.cash);
+                        }
+                        break;
                 }
 
-                break;
 
-            case 2:
-                System.out.println("fixa food klassen");
-                break;
+
+
         }
     }
 }

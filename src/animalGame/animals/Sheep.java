@@ -3,6 +3,17 @@ package animalGame.animals;
 import animalGame.animals.models.Animal;
 
 public class Sheep implements Animal {
+
+    public String name;
+
+    int health = 100;
+    Boolean isAlive;
+    String gender;
+
+    public Sheep(String name){
+        this.name = name;
+    }
+
     @Override
     public void health() {
 
@@ -25,11 +36,10 @@ public class Sheep implements Animal {
 
     @Override
     public void setGender(String gender) {
-
-    }
+        this.gender = gender;    }
 
     @Override
     public String getGender() {
-        return null;
+        return gender;
     }
 }
