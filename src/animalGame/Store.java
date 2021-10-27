@@ -47,9 +47,6 @@ public class Store {
 
         switch (val){
             case 1:
-
-
-
                 switch (val){
                     case 1:
 
@@ -164,6 +161,38 @@ public class Store {
                             System.out.println("New Balance: " + player.cash);
                         }
                         break;
+
+                    case 5:
+                        System.out.println("The Sheep costs 250");
+                        thePrice = 250;
+                        cardScan = player.cash;
+
+                        if(thePrice > cardScan){
+                            System.out.println("The card got declined");
+                        }
+                        else{
+
+                            System.out.println("Name your Sheep");
+                            String name = sc.nextLine();
+                            sheep = new Sheep(name);
+                            System.out.println("Gender of your horse  1. Boy    2. Girl");
+                            int gender = sc.nextInt();
+                            switch(gender){
+                                case 1:
+                                    goat.setGender("Boy");
+                                    break;
+
+                                case 2:
+
+                                    goat.setGender("Girl");
+                                    break;
+                            }
+
+                            player.cash -= thePrice;
+                            System.out.println("New Balance: " + player.cash);
+                        }
+                        break;
+
                 }
 
 
