@@ -3,6 +3,7 @@ package animalGame.animals;
 import animalGame.animals.models.Animal;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Chicken implements Animal {
 
@@ -12,6 +13,8 @@ public class Chicken implements Animal {
     int health = 100;
     Boolean isAlive;
     String gender;
+    Chicken chicken; // KALLA DENNA VARIABEL NÄR PROCREATE BLIR TILL ETT NYTT OBJEKT
+    Scanner sc = new Scanner(System.in);
 
     public Chicken(String name) {
         this.name = name;
@@ -62,6 +65,12 @@ public class Chicken implements Animal {
         switch (choice){
             case 1:
                 System.out.println("No baby this time sorry...");
+                break;
+
+            case 2:
+                System.out.println("Name your chicken");
+                String n = sc.nextLine();
+                chicken = new Chicken(name);
         }
     }
 
