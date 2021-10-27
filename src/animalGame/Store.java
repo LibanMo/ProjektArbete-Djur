@@ -83,6 +83,7 @@ public class Store {
                             String name = sc.nextLine();
                             horse = new Horse(name);
                             System.out.println("Gender of your horse  1. Boy    2. Girl");
+                            player.horses.add(horse);
                             int gender = sc.nextInt();
                             switch(gender){
                                 case 1:

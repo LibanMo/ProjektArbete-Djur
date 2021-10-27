@@ -1,5 +1,8 @@
 package animalGame;
 
+import animalGame.animals.Horse;
+import animalGame.animals.Sheep;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,6 +14,9 @@ public class Player {
 
     Store store;
     Scanner sc = new Scanner(System.in);
+
+    ArrayList<Horse>horses = new ArrayList<Horse>();
+    ArrayList<Sheep>sheeps = new ArrayList<Sheep>();
 
 
 

@@ -2,6 +2,7 @@ package animalGame.animals.models;
 
 public interface Animal {
 
+    void healthDeclinje();
 
     void health(); // Visar djurets hälsa.
 
