@@ -2,6 +2,8 @@ package animalGame.animals;
 
 import animalGame.animals.models.Animal;
 
+import java.util.Random;
+
 public class Chicken implements Animal {
 
 
@@ -13,6 +15,26 @@ public class Chicken implements Animal {
 
     public Chicken(String name) {
         this.name = name;
+
+    }
+
+    @Override
+    public void healthDeclinje() {
+        Random random = new Random();
+        int choice = random.nextInt(3)+ 1;
+        switch(choice){
+            case 1:
+                health = health - 10;
+                break;
+
+            case 2:
+                health = health - 20;
+                break;
+
+            case 3:
+                health = health - 30;
+                break;
+        }
 
     }
 
