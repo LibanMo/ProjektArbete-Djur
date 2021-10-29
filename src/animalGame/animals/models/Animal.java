@@ -19,7 +19,8 @@ public interface Animal {
 
 
 /**
- * Någon behöver skapa en lista av djurobjektet för att sedan kunna löägga till djur i spelarens lista
+ * Någon behöver skapa en lista av djurobjektet för att sedan kunna
+ * lägga till djur i spelarens lista
  */
 
 }
