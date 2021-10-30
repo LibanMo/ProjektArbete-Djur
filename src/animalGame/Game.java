@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 // här inne ska spelet köras, vi behöver skapa hjälpmetoder som hänvisar spelaren om spelet.
 
-public class Game {
+public class §  Game {
     int users; // Hur många spelare som är med
     int rounds; // ANTALET RUNDOR
     Player player;
