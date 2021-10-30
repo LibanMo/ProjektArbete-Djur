@@ -22,6 +22,7 @@ public class Store {
 
 
 
+
     //DETTA SKA REPRENSETRA EN BUTIK
 
     // I EN BUTIK KAN KÖPET NEKAS
@@ -52,15 +53,32 @@ public class Store {
 
                         System.out.println("The Chicken Costs 150");
                         thePrice = 150;
-                        cardScan = player.cash;
+                        cardScan = this.player.cash;
 
                         if(thePrice > cardScan){
                             System.out.println("The card got declined");
                         }
                         else{
+                          int newer =   cardScan -= thePrice;
+                          player.setBalance(newer);
 
-                            player.cash -= thePrice;
-                            System.out.println("New Balance: " + player.cash);
+                            System.out.println("Name Your Chicken...");
+                            String name = sc.next();
+                            this.chicken = new Chicken(name);
+                            System.out.println("What Gender:  1. Boy    0 . Girl");
+                            int Gender = sc.nextInt();
+                            switch (Gender) {
+                                case 1:
+                                    chicken.setGender("Boy");
+                                    break;
+
+                                case 0:
+                                    chicken.setGender("Girl");
+                            }
+
+                            player.animals.add(chicken);
+
+                            System.out.println("New Balance: " + cardScan);
                         }
                         break;
 
@@ -80,7 +98,7 @@ public class Store {
                             String name = sc.nextLine();
                             horse = new Horse(name);
                             System.out.println("Gender of your horse  1. Boy    2. Girl");
-                            player.horses.add(horse);
+
                             int gender = sc.nextInt();
                             switch(gender){
                                 case 1:

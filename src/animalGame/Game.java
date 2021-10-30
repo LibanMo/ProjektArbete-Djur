@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 // här inne ska spelet köras, vi behöver skapa hjälpmetoder som hänvisar spelaren om spelet.
 
-public class §  Game {
+public class Game {
     int users; // Hur många spelare som är med
     int rounds; // ANTALET RUNDOR
     Player player;
@@ -55,9 +55,8 @@ public class §  Game {
         while (users != a) {
             System.out.println("Player " + (1 + a) + " Name:");
             String val = scanner.next();
-            this. player = new Player(val);
-
-            players.add(this.player);
+            player = new Player(val);
+            players.add(player);
             a++;
         }
         showPlayers();
@@ -71,7 +70,7 @@ public class §  Game {
         System.out.println("amount of players: " + players.size());
         for (Player i : players) {
             System.out.println("----------------");
-            System.out.println(player.name + " Money: " + i.cash);
+            System.out.println(i.name + " Money: " + i.cash);
         }
 
         nextMove();
@@ -86,13 +85,15 @@ public class §  Game {
 
         while (rounds > num) {
             for (Player p : players) {
-                System.out.println("\n" + p.name + " Make your move " + p.cash + "\n\n");
+                System.out.println("\n" + p.name + " Make your move " + p.getBalance()+ "\n");
+                System.out.print("----------------------------->"); p.getAnimals();
+                System.out.println("\n");
                 System.out.println("1. Buy an Animal   2. Buy Foods   3. Feed animal   4. Sell Animal   5. Procreate Animal");
                 int val = scanner.nextInt();
 
                 switch (val) {
                     case 1:
-                        store = new Store(this.player);
+                        store = new Store(p);
                         store.Welcome();
 
                         break;
@@ -111,6 +112,7 @@ public class §  Game {
                     case 5:
                         System.out.println("Option 5");
                         break;
+
 
                 }
 

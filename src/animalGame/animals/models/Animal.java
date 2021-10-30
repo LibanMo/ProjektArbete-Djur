@@ -2,6 +2,12 @@ package animalGame.animals.models;
 
 public interface Animal {
 
+
+
+    String getName();
+
+    String animalType();
+
     void healthDeclinje();
 
     void health(); // Visar djurets hälsa.
@@ -16,7 +22,7 @@ public interface Animal {
 
     public String getGender();
 
-
+    String getHealth();
 
 /**
  * Någon behöver skapa en lista av djurobjektet för att sedan kunna löägga till djur i spelarens lista

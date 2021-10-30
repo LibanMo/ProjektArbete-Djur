@@ -10,7 +10,9 @@ public class Chicken implements Animal {
 
     public String name;
 
+    String type = "Chicken";
     int health = 100;
+    String b = Integer.toString(health);
     Boolean isAlive;
     String gender;
     Chicken chicken; // KALLA DENNA VARIABEL NÄR PROCREATE BLIR TILL ETT NYTT OBJEKT
@@ -19,6 +21,16 @@ public class Chicken implements Animal {
     public Chicken(String name) {
         this.name = name;
 
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String animalType() {
+        return type;
     }
 
     @Override
@@ -81,12 +93,18 @@ public class Chicken implements Animal {
 
     @Override
     public void setGender(String gender) {
+        this.gender = gender;
 
     }
 
     @Override
     public String getGender() {
-        return null;
+        return gender;
+    }
+
+    @Override
+    public String getHealth() {
+        return b + "%";
     }
 }
 
