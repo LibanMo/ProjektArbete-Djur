@@ -5,13 +5,23 @@ import animalGame.animals.models.Animal;
 public class Sheep implements Animal {
 
     public String name;
-
+    String type = "Sheep";
     int health = 100;
     Boolean isAlive;
     String gender;
-
+    String b = Integer.toString(health);
     public Sheep(String name){
         this.name = name;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String animalType() {
+        return type;
     }
 
     @Override
@@ -48,5 +58,10 @@ public class Sheep implements Animal {
     @Override
     public String getGender() {
         return gender;
+    }
+
+    @Override
+    public String getHealth() {
+        return b + "%";
     }
 }

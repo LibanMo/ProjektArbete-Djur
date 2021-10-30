@@ -5,15 +5,26 @@ import animalGame.animals.models.Animal;
 public class Cow implements Animal {
 
     public String name;
+    String type = "Cow";
 
     int health = 100;
     Boolean isAlive;
     String gender;
-
+    String b = Integer.toString(health);
     public Cow(String name){
         this.name = name;
     }
 
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String animalType() {
+        return type;
+    }
 
     @Override
     public void healthDeclinje() {
@@ -49,5 +60,10 @@ public class Cow implements Animal {
     @Override
     public String getGender() {
         return gender;
+    }
+
+    @Override
+    public String getHealth() {
+        return b + "%";
     }
 }
