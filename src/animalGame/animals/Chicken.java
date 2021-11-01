@@ -17,6 +17,7 @@ public class Chicken implements Animal {
     String gender;
     Chicken chicken; // KALLA DENNA VARIABEL NÄR PROCREATE BLIR TILL ETT NYTT OBJEKT
     Scanner sc = new Scanner(System.in);
+    int decline;
 
     public Chicken(String name) {
         this.name = name;
@@ -34,23 +35,32 @@ public class Chicken implements Animal {
     }
 
     @Override
-    public void healthDeclinje() {
-        Random random = new Random();
-        int choice = random.nextInt(3)+ 1;
-        switch(choice){
-            case 1:
-                health = health - 10;
-                break;
+    public void healthDecline() {
+       Random random = new Random();
+       int choice = random.nextInt(3)+1;
+       switch (choice) {
 
-            case 2:
-                health = health - 20;
-                break;
+           case 1:
+               decline = 10;
 
-            case 3:
-                health = health - 30;
-                break;
-        }
+               break;
 
+           case 2:
+               decline = 20;
+
+               break;
+
+           case 3:
+               decline = 30;
+
+               break;
+       }
+
+    }
+
+    @Override
+    public String getDecline() {
+        return "-" + decline;
     }
 
     @Override
@@ -104,7 +114,7 @@ public class Chicken implements Animal {
 
     @Override
     public String getHealth() {
-        return b + "%";
+        return health - decline + "%";
     }
 }
 

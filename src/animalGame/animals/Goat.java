@@ -2,6 +2,8 @@ package animalGame.animals;
 
 import animalGame.animals.models.Animal;
 
+import java.util.Random;
+
 public class Goat implements Animal {
 
     public String name;
@@ -10,6 +12,8 @@ public class Goat implements Animal {
     Boolean isAlive;
     String gender;
     String b = Integer.toString(health);
+    int decline;
+
     public Goat(String name) {
         this.name = name;
     }
@@ -24,9 +28,35 @@ public class Goat implements Animal {
         return type;
     }
 
-    @Override
-    public void healthDeclinje() {
 
+    @Override
+    public void healthDecline() {
+        Random random = new Random();
+        int choice = random.nextInt(3)+1;
+        switch (choice) {
+
+            case 1:
+                decline = 10;
+
+                break;
+
+            case 2:
+                decline = 20;
+
+                break;
+
+            case 3:
+                decline = 30;
+
+                break;
+        }
+
+
+    }
+
+    @Override
+    public String getDecline() {
+        return "-" + decline;
     }
 
     @Override
@@ -61,6 +91,6 @@ public class Goat implements Animal {
 
     @Override
     public String getHealth() {
-        return b + "%";
+        return health - decline + "%";
     }
 }

@@ -3,6 +3,8 @@ package animalGame;
 
 
 
+import animalGame.animals.models.Animal;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,7 +18,6 @@ public class Game {
     Player player;
     List<Player> players; // LISTA AV OBJEKT PLAYER
     Store store;
-
     Scanner scanner = new Scanner(System.in);
 
 
@@ -115,8 +116,10 @@ public class Game {
 
 
                 }
+                    p.DeclineAnimal();
 
             }
+
             num++;
 
 
