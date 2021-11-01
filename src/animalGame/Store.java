@@ -48,8 +48,6 @@ public class Store {
 
         switch (val){
             case 1:
-                switch (val){
-                    case 1:
 
                         System.out.println("The Chicken Costs 150");
                         thePrice = 150;
@@ -84,133 +82,140 @@ public class Store {
 
 
 
-                    case 2:
-                        System.out.println("The Horse costs 500");
-                        thePrice = 500;
-                        cardScan = player.cash;
+            case 2:
 
-                        if(thePrice > cardScan){
-                            System.out.println("The card got declined");
-                        }
-                        else{
+                System.out.println("A Horse costs 500");
+                thePrice = 500;
+                cardScan = this.player.cash;
 
-                            System.out.println("Name your Horse");
-                            String name = sc.nextLine();
-                            horse = new Horse(name);
-                            System.out.println("Gender of your horse  1. Boy    2. Girl");
+                if(thePrice > cardScan){
+                    System.out.println("The card got declined");
+                }
+                else{
+                    int newer =   cardScan -= thePrice;
+                    player.setBalance(newer);
 
-                            int gender = sc.nextInt();
-                            switch(gender){
-                                case 1:
-                                    horse.setGender("Boy");
-                                    break;
+                    System.out.println("Name Your Horse...");
+                    String name = sc.next();
+                    this.horse = new Horse(name);
+                    System.out.println("What Gender:  1. Boy    0 . Girl");
+                    int Gender = sc.nextInt();
+                    switch (Gender) {
+                        case 1:
+                            horse.setGender("Boy");
+                            break;
 
-                                case 2:
+                        case 0:
+                            horse.setGender("Girl");
+                    }
 
-                                    horse.setGender("Girl");
-                                    break;
-                            }
+                    player.animals.add(horse);
 
-                            player.cash -= thePrice;
-                            System.out.println("New Balance: " + player.cash);
-                        }
-                        break;
+                    System.out.println("New Balance: " + cardScan);
+                }
+                break;
 
+            case 3:
 
-                    case 3:
-                        System.out.println("The Cow costs 400");
-                        thePrice = 400;
-                        cardScan = player.cash;
+                System.out.println("A Cow costs 450");
+                thePrice = 450;
+                cardScan = this.player.cash;
 
-                        if(thePrice > cardScan){
-                            System.out.println("The card got declined");
-                        }
-                        else{
+                if(thePrice > cardScan){
+                    System.out.println("The card got declined");
+                }
+                else{
+                    int newer =   cardScan -= thePrice;
+                    player.setBalance(newer);
 
-                            System.out.println("Name your Cow");
-                            String name = sc.nextLine();
-                            cow = new Cow(name);
-                            System.out.println("Gender of your horse  1. Boy    2. Girl");
-                            int gender = sc.nextInt();
-                            switch(gender){
-                                case 1:
-                                    cow.setGender("Boy");
-                                    break;
+                    System.out.println("Name Your Cow...");
+                    String name = sc.next();
+                    this.cow = new Cow(name);
+                    System.out.println("What Gender:  1. Boy    0 . Girl");
+                    int Gender = sc.nextInt();
+                    switch (Gender) {
+                        case 1:
+                            cow.setGender("Boy");
+                            break;
 
-                                case 2:
+                        case 0:
+                            cow.setGender("Girl");
+                    }
 
-                                    cow.setGender("Girl");
-                                    break;
-                            }
+                    player.animals.add(cow);
 
-                            player.cash -= thePrice;
-                            System.out.println("New Balance: " + player.cash);
-                        }
-                        break;
+                    System.out.println("New Balance: " + cardScan);
+                }
+                break;
 
 
-                    case 4:
-                        System.out.println("The Goat costs 300");
-                        thePrice = 300;
-                        cardScan = player.cash;
+            case 4:
 
-                        if(thePrice > cardScan){
-                            System.out.println("The card got declined");
-                        }
-                        else{
+                System.out.println("The Goat Costs 300");
+                thePrice = 300;
+                cardScan = this.player.cash;
 
-                            System.out.println("Name your Goat");
-                            String name = sc.nextLine();
-                            goat = new Goat(name);
-                            System.out.println("Gender of your horse  1. Boy    2. Girl");
-                            int gender = sc.nextInt();
-                            switch(gender){
-                                case 1:
-                                    goat.setGender("Boy");
-                                    break;
+                if(thePrice > cardScan){
+                    System.out.println("The card got declined");
+                }
+                else{
+                    int newer =   cardScan -= thePrice;
+                    player.setBalance(newer);
 
-                                case 2:
+                    System.out.println("Name Your Goat...");
+                    String name = sc.next();
+                    this.goat = new Goat(name);
+                    System.out.println("What Gender:  1. Boy    0 . Girl");
+                    int Gender = sc.nextInt();
+                    switch (Gender) {
+                        case 1:
+                            goat.setGender("Boy");
+                            break;
 
-                                    goat.setGender("Girl");
-                                    break;
-                            }
+                        case 0:
+                            goat.setGender("Girl");
+                    }
 
-                            player.cash -= thePrice;
-                            System.out.println("New Balance: " + player.cash);
-                        }
-                        break;
+                    player.animals.add(goat);
 
-                    case 5:
-                        System.out.println("The Sheep costs 250");
-                        thePrice = 250;
-                        cardScan = player.cash;
+                    System.out.println("New Balance: " + cardScan);
+                }
+                break;
 
-                        if(thePrice > cardScan){
-                            System.out.println("The card got declined");
-                        }
-                        else{
 
-                            System.out.println("Name your Sheep");
-                            String name = sc.nextLine();
-                            sheep = new Sheep(name);
-                            System.out.println("Gender of your horse  1. Boy    2. Girl");
-                            int gender = sc.nextInt();
-                            switch(gender){
-                                case 1:
-                                    goat.setGender("Boy");
-                                    break;
 
-                                case 2:
+            case 5:
 
-                                    goat.setGender("Girl");
-                                    break;
-                            }
+                System.out.println("The Sheep Costs 250");
+                thePrice = 250;
+                cardScan = this.player.cash;
 
-                            player.cash -= thePrice;
-                            System.out.println("New Balance: " + player.cash);
-                        }
-                        break;
+                if(thePrice > cardScan){
+                    System.out.println("The card got declined");
+                }
+                else{
+                    int newer =   cardScan -= thePrice;
+                    player.setBalance(newer);
 
+                    System.out.println("Name Your Sheep...");
+                    String name = sc.next();
+                    this.sheep = new Sheep(name);
+                    System.out.println("What Gender:  1. Boy    0 . Girl");
+                    int Gender = sc.nextInt();
+                    switch (Gender) {
+                        case 1:
+                            sheep.setGender("Boy");
+                            break;
+
+                        case 0:
+                            sheep.setGender("Girl");
+                    }
+
+                    player.animals.add(sheep);
+
+                    System.out.println("New Balance: " + cardScan);
+                }
+                break;
                 }
 
 
@@ -218,6 +223,6 @@ public class Store {
 
         }
     }
-}
+
 
 

@@ -48,7 +48,21 @@ public class Player {
             multipleValues.get(animal.animalType()).add(animal.getName());
             multipleValues.get(animal.animalType()).add(animal.getGender());
             multipleValues.get(animal.animalType()).add(animal.getHealth());
+            multipleValues.get(animal.animalType()).add(animal.getDecline());
             System.out.println(multipleValues);
+        }
+    }
+
+    void DeclineAnimal(){
+        for (Animal animal : animals){
+            if (animals.isEmpty()){
+                break;
+            }
+            else {
+                animal.healthDecline();
+            }
+
+
         }
     }
 

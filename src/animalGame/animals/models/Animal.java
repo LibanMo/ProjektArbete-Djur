@@ -8,7 +8,9 @@ public interface Animal {
 
     String animalType();
 
-    void healthDeclinje();
+    void healthDecline();
+
+    String getDecline();
 
     void health(); // Visar djurets hälsa.
 
