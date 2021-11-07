@@ -13,6 +13,8 @@ public class Goat implements Animal {
     String gender;
     String b = Integer.toString(health);
     int decline;
+    String eatsOnly = "Soy";
+    int age = 1;
 
     public Goat(String name) {
         this.name = name;
@@ -65,8 +67,21 @@ public class Goat implements Animal {
     }
 
     @Override
-    public void feed() {
+    public void feed(String food) {
+        if (health == 100) {
+            System.out.println("Health is already full");
+        }
+        else if (food.equalsIgnoreCase(eatsOnly)){
+            System.out.println("Yummy!");
+            health += 10;
 
+        }
+
+        else  {
+            System.out.println("Your Goat cant eat " + food );
+            System.out.println("Goat only eats " + eatsOnly);
+
+        }
     }
 
     @Override
@@ -76,6 +91,7 @@ public class Goat implements Animal {
 
     @Override
     public void isDead() {
+        System.out.println("Your Goat " + name + " is dead");
 
     }
 
@@ -91,6 +107,14 @@ public class Goat implements Animal {
 
     @Override
     public String getHealth() {
+        if (health <= 0){
+            isDead();
+        }
         return health - decline + "%";
+    }
+
+    @Override
+    public Integer getAge() {
+        return age;
     }
 }

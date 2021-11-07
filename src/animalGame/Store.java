@@ -1,14 +1,16 @@
 package animalGame;
 
+import animalGame.Foods.Corn;
+import animalGame.Foods.Soy;
+import animalGame.Foods.Wheat;
 import animalGame.animals.*;
+import animalGame.animals.models.Animal;
 
 import java.util.Scanner;
 
 
 
 public class Store {
-
-
 
     Player player;
     Scanner sc = new Scanner(System.in);
@@ -19,6 +21,11 @@ public class Store {
     Cow cow;
     Sheep sheep;
     Goat goat;
+    Wheat wheat;
+    Corn corn;
+    Soy soy;
+    int amount;
+    int Total;
 
 
 
@@ -39,7 +46,7 @@ public class Store {
      * TILLSLUT LÄGS SPELARENS DJUR I EN LISTA MED SAMMA OBJEKT SOM DJURETS SOM KÖPTES
      */
 
-    public void Welcome() {
+    public void buyAnimal() {
         System.out.println("Hey Welcome to  our store");
         System.out.println("Would You Like to Buy?: ");
         System.out.println("1. Chicken     2. Horse     3. Cow     4. Goat     5. Sheep");
@@ -218,10 +225,112 @@ public class Store {
                 break;
                 }
 
+        }
+
+        public void buyFood(){
+            System.out.println("Today in store we have ");
+            System.out.println("1. Wheat [100]    2. Soy [150]    3. Corn [200]");
+            int choice = sc.nextInt();
+            switch (choice) {
+                case 1:
+                    thePrice = 100;
+                    System.out.println("A Kilo of Wheat costs 100");
+                    System.out.println("Enter amount of kilo you want to buy");
+                    amount = sc.nextInt();
+                    Total = amount * thePrice;
+                    System.out.println("Your Total comes to " + Total + "\n");
+                    cardScan = this.player.cash;
+
+                    if(Total > cardScan){
+                        System.out.println("***Declined***\n");
+
+                    }
+                    else if(Total < cardScan){
+                        System.out.println("***Accepted***");
+                        int num = 0;
+                        while(num != amount){
+                            wheat = new Wheat();
+                            player.addFood(wheat);
+                            num ++;
+
+                        }
+                        int newer = cardScan - Total;
+                        player.setBalance(newer);
+                    }
+                    break;
+
+                case 2:
+                    thePrice =  150;
+                    System.out.println("A Kilo of Soy costs 100");
+                    System.out.println("Enter amount of kilo you want to buy");
+                    amount = sc.nextInt();
+                    Total = amount * thePrice;
+                    System.out.println("Your Total comes to " + Total + "\n");
+                    cardScan = this.player.cash;
+
+                    if(Total > cardScan){
+                        System.out.println("***Declined***\n");
+                        buyFood();
+
+                    }
+                    else if(Total < cardScan){
+                        System.out.println("***Accepted***");
+                        int num = 0;
+                        while(num != amount){
+                            soy = new Soy();
+                            player.addFood(soy);
+
+                            num ++;
 
 
+                        }
+                        int newer = cardScan - Total;
+                        player.setBalance(newer);
+                    }
+                    break;
+
+                case 3:
+                    thePrice =  200;
+                    System.out.println("A Kilo of Corn costs 200");
+                    System.out.println("Enter amount of kilo you want to buy");
+                    amount = sc.nextInt();
+                    Total = amount * thePrice;
+                    System.out.println("Your Total comes to " + Total + "\n");
+                    cardScan = this.player.cash;
+
+                    if(Total > cardScan){
+                        System.out.println("***Declined***\n");
+
+                    }
+                    else if(Total < cardScan){
+                        System.out.println("***Accepted***");
+                        int num = 0;
+                        while(num != amount){
+                            corn = new Corn();
+                            player.addFood(corn);
+                            num ++;
+
+                        }
+                        int newer = cardScan - Total;
+                        player.setBalance(newer);
+                    }
+                    break;
+
+            }
 
         }
+//
+//        void sellAnimals(){
+//            System.out.println("Hey! So you want to sell one of ur animals?\n");
+//            System.out.println("Enter the number next to the animal you wish to sell");
+//            int choice = sc.nextInt();
+//            for(int i = 0; i <= player.animals.size(); i++){
+//                System.out.println(i + ": " + player.animals.get(i) + " Health: " + player.animals.get(i).getHealth() + " Age: " + player.animals.get(i).getAge() );
+//
+//            }
+//            player.animals.get(choice);
+//            thePrice =
+//        }
     }
 
 
