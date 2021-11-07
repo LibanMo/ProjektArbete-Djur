@@ -1,4 +1,5 @@
 package animalGame.Foods.models;
 
-public class Food {
+public interface Food {
+    public String getType();
 }

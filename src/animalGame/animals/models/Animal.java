@@ -14,7 +14,7 @@ public interface Animal {
 
     void health(); // Visar djurets hälsa.
 
-    void feed(); // Mata djuret, detta leder till Health ökar.
+    void feed(String food); // Mata djuret, detta leder till Health ökar.
 
     void proCreate(); // Djuren parar sig.
 
@@ -26,8 +26,11 @@ public interface Animal {
 
     String getHealth();
 
+    Integer getAge();
+
+
 /**
- * Någon behöver skapa en lista av djurobjektet för att sedan kunna löägga till djur i spelarens lista
+ * Någon behöver skapa en lista av djurobjektet för att sedan kunna lägga till djur i spelarens lista
  */
 
 }

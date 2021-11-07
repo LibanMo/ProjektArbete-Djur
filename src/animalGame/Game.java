@@ -87,7 +87,10 @@ public class Game {
         while (rounds > num) {
             for (Player p : players) {
                 System.out.println("\n" + p.name + " Make your move " + p.getBalance()+ "\n");
-                System.out.print("----------------------------->"); p.getAnimals();
+                System.out.print("----------------------------->");
+                p.getAnimals();
+                p.showFood();
+
                 System.out.println("\n");
                 System.out.println("1. Buy an Animal   2. Buy Foods   3. Feed animal   4. Sell Animal   5. Procreate Animal");
                 int val = scanner.nextInt();
@@ -95,15 +98,16 @@ public class Game {
                 switch (val) {
                     case 1:
                         store = new Store(p);
-                        store.Welcome();
+                        store.buyAnimal();
 
                         break;
                     case 2:
-                        System.out.println("Option 2");
+                        store = new Store(p);
+                        store.buyFood();
 
                         break;
                     case 3:
-                        System.out.println("Option 3");
+                        p.feedAnimal();
 
                         break;
                     case 4:

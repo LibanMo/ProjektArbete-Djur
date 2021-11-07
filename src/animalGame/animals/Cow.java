@@ -14,8 +14,10 @@ public class Cow implements Animal {
     String gender;
     String b = Integer.toString(health);
     int decline;
+    String eatsOnly = "Wheat";
+    int age = 1;
 
-    public Cow(String name){
+    public Cow(String name) {
         this.name = name;
     }
 
@@ -33,7 +35,7 @@ public class Cow implements Animal {
     @Override
     public void healthDecline() {
         Random random = new Random();
-        int choice = random.nextInt(3)+1;
+        int choice = random.nextInt(3) + 1;
         switch (choice) {
 
             case 1:
@@ -65,8 +67,18 @@ public class Cow implements Animal {
     }
 
     @Override
-    public void feed() {
+    public void feed(String food) {
+        if (health == 100) {
+            System.out.println("Health is already full");
+        } else if (food.equalsIgnoreCase(eatsOnly)) {
+            System.out.println("Yummy!");
+            health += 10;
 
+        } else {
+            System.out.println("Your Cow cant eat " + food);
+            System.out.println("Cow only eats " + eatsOnly);
+
+        }
     }
 
     @Override
@@ -76,6 +88,7 @@ public class Cow implements Animal {
 
     @Override
     public void isDead() {
+        System.out.println("You Cow " + name + " is dead");
 
     }
 
@@ -92,6 +105,15 @@ public class Cow implements Animal {
 
     @Override
     public String getHealth() {
+        if (health <= 0) {
+            isDead();
+        }
         return health - decline + "%";
     }
+
+    @Override
+    public Integer getAge() {
+        return age;
+    }
 }
+
