@@ -22,11 +22,15 @@ public interface Animal {
 
     void setGender(String  gender);
 
-    public String getGender();
+     String getGender();
 
-    String getHealth();
+     Integer getHealth();
+
+    String showHealth();
 
     Integer getAge();
+
+    String getType();
 
 
 /**

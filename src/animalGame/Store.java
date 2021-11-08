@@ -9,7 +9,6 @@ import animalGame.animals.models.Animal;
 import java.util.Scanner;
 
 
-
 public class Store {
 
     Player player;
@@ -24,6 +23,13 @@ public class Store {
     Wheat wheat;
     Corn corn;
     Soy soy;
+
+    int horsePrice = 500;
+    int cowPrice = 450;
+    int chickenPrice = 150;
+    int goatPrice = 300;
+    int sheepPrice = 250;
+
     int amount;
     int Total;
 
@@ -56,15 +62,15 @@ public class Store {
         switch (val){
             case 1:
 
-                        System.out.println("The Chicken Costs 150");
-                        thePrice = 150;
+                        System.out.println("The Chicken Costs " + chickenPrice);
+
                         cardScan = this.player.cash;
 
-                        if(thePrice > cardScan){
+                        if(chickenPrice > cardScan){
                             System.out.println("The card got declined");
                         }
                         else{
-                          int newer =   cardScan -= thePrice;
+                          int newer =   cardScan -= chickenPrice;
                           player.setBalance(newer);
 
                             System.out.println("Name Your Chicken...");
@@ -91,15 +97,15 @@ public class Store {
 
             case 2:
 
-                System.out.println("A Horse costs 500");
-                thePrice = 500;
+                System.out.println("A Horse costs " + horsePrice);
+
                 cardScan = this.player.cash;
 
-                if(thePrice > cardScan){
+                if(horsePrice> cardScan){
                     System.out.println("The card got declined");
                 }
                 else{
-                    int newer =   cardScan -= thePrice;
+                    int newer =   cardScan -= horsePrice;
                     player.setBalance(newer);
 
                     System.out.println("Name Your Horse...");
@@ -124,15 +130,15 @@ public class Store {
 
             case 3:
 
-                System.out.println("A Cow costs 450");
-                thePrice = 450;
+                System.out.println("A Cow costs "+ cowPrice);
+
                 cardScan = this.player.cash;
 
-                if(thePrice > cardScan){
+                if(cowPrice > cardScan){
                     System.out.println("The card got declined");
                 }
                 else{
-                    int newer =   cardScan -= thePrice;
+                    int newer =   cardScan -= cowPrice;
                     player.setBalance(newer);
 
                     System.out.println("Name Your Cow...");
@@ -158,15 +164,15 @@ public class Store {
 
             case 4:
 
-                System.out.println("The Goat Costs 300");
-                thePrice = 300;
+                System.out.println("The Goat Costs " + goatPrice);
+
                 cardScan = this.player.cash;
 
-                if(thePrice > cardScan){
+                if(goatPrice > cardScan){
                     System.out.println("The card got declined");
                 }
                 else{
-                    int newer =   cardScan -= thePrice;
+                    int newer =   cardScan -= goatPrice;
                     player.setBalance(newer);
 
                     System.out.println("Name Your Goat...");
@@ -193,15 +199,15 @@ public class Store {
 
             case 5:
 
-                System.out.println("The Sheep Costs 250");
-                thePrice = 250;
+                System.out.println("The Sheep Costs " + sheepPrice);
+
                 cardScan = this.player.cash;
 
-                if(thePrice > cardScan){
+                if(sheepPrice > cardScan){
                     System.out.println("The card got declined");
                 }
                 else{
-                    int newer =   cardScan -= thePrice;
+                    int newer =   cardScan -= sheepPrice;
                     player.setBalance(newer);
 
                     System.out.println("Name Your Sheep...");
@@ -316,21 +322,27 @@ public class Store {
                     }
                     break;
 
-            }
+         }
 
-        }
-//
-//        void sellAnimals(){
-//            System.out.println("Hey! So you want to sell one of ur animals?\n");
-//            System.out.println("Enter the number next to the animal you wish to sell");
-//            int choice = sc.nextInt();
-//            for(int i = 0; i <= player.animals.size(); i++){
-//                System.out.println(i + ": " + player.animals.get(i) + " Health: " + player.animals.get(i).getHealth() + " Age: " + player.animals.get(i).getAge() );
-//
-//            }
-//            player.animals.get(choice);
-//            thePrice =
-//        }
+     }
+
+       void sellAnimals(){
+           System.out.println("Hey! So you want to sell one of ur animals?\n");
+           System.out.println("Enter the number next to the animal you wish to sell");
+           int choice = sc.nextInt();
+           for(int i = 0; i <= player.animals.size(); i++){
+               System.out.println(i + ": " + player.animals.get(i) + " Health: " + player.animals.get(i).getHealth() + " Age: " + player.animals.get(i).getAge() );
+
+           }
+           String whatType = player.animals.get(choice).getType();
+           switch (whatType){
+               case "Chicken":
+                   int payOut =(chickenPrice * player.animals.get(choice).getHealth()) - player.animals.get(choice).getAge() * 5;
+
+
+           }
+
+     }
     }
 
 
