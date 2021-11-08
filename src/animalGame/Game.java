@@ -52,7 +52,7 @@ public class Game {
         players = new ArrayList<>();
         int a = 0;
 
-
+        // for loop med int i=0, i<users; i++
         while (users != a) {
             System.out.println("Player " + (1 + a) + " Name:");
             String val = scanner.next();
@@ -124,11 +124,11 @@ public class Game {
 
             }
 
-            num++;
+            num++; // round finished, add to roundCounter
+        } // end of while loop
 
+    } // end of nextMove method
 
-        }
-    }
 }
 
 

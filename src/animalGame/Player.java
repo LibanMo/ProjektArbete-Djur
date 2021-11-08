@@ -54,7 +54,7 @@ public class Player {
             multipleValues.put(animal.animalType(), new ArrayList<String>());
             multipleValues.get(animal.animalType()).add(animal.getName());
             multipleValues.get(animal.animalType()).add(animal.getGender());
-            multipleValues.get(animal.animalType()).add(animal.getHealth());
+            multipleValues.get(animal.animalType()).add(animal.showHealth());
             multipleValues.get(animal.animalType()).add(animal.getDecline());
             System.out.println(multipleValues);
         }

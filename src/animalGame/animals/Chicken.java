@@ -120,17 +120,29 @@ public class Chicken implements Animal {
     }
 
     @Override
-    public String getHealth() {
+    public Integer getHealth() {
+        return  health;
+    }
+
+    @Override
+    public String showHealth() {
         if (health <= 0 ){
             isDead();
         }
 
-        return health - decline + "%";
+
+        health = health - decline;
+        return health + "%";
     }
 
     @Override
     public Integer getAge() {
         return age;
+    }
+
+    @Override
+    public String getType() {
+        return type;
     }
 }
 
