@@ -3,105 +3,134 @@ package animalGame.animals;
 import animalGame.animals.models.Animal;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Sheep implements Animal {
 
     public String name;
-
+    String type = "Sheep";
     int health = 100;
     Boolean isAlive;
     String gender;
-    Sheep sheep; // KALLA DENNA VARIABEL NÄR PROCREATE BLIR TILL ETT NYTT OBJEKT
-    Scanner sc = new Scanner(System.in);
+    String b = Integer.toString(health);
+    int decline;
+    int age = 1;
+    int maxAge = 12;
+
+    String eatsOnly = "Wheat";
 
     public Sheep(String name){
         this.name = name;
     }
 
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String animalType() {
+        return type;
+    }
 
     @Override
     public void healthDecline() {
-
         Random random = new Random();
-        int choice = random.nextInt(3)+ 1;
-        switch(choice){
+        age ++;
+        int choice = random.nextInt(3)+1;
+        switch (choice) {
+
             case 1:
-                health = health - 10;
+                decline = 10;
+
                 break;
 
             case 2:
-                health = health - 20;
+                decline = 20;
+
                 break;
 
             case 3:
-                health = health - 30;
+                decline = 30;
+
                 break;
         }
 
     }
 
     @Override
-    public void health() {
-        System.out.println("Your Sheep " + name + " Health: " + health);
+    public String getDecline() {
+        return "-" + decline;
     }
 
     @Override
-    public void feed() {
-        if (health == 100) {
-            System.out.println("Health is already full");
-        } else {
-            health = health + 10;
-        }
+
+    // Djurets Hälsa skav visas med denna metod
+    public void health() {
 
     }
 
+    @Override
+    public void feed(String food) {
+        if (health == 100) {
+            System.out.println("Health is already full");
+        }
+        else if (food.equalsIgnoreCase(eatsOnly)){
+            System.out.println("Yummy!");
+            health += 10;
+
+        }
+
+        else  {
+            System.out.println("Your Sheep cant eat " + food );
+            System.out.println("Sheep only eats " + eatsOnly);
+
+        }
+    }
     @Override
     public void proCreate() {
 
-        Random random = new Random();
-        int choice = random.nextInt(2) + 1;
-        switch (choice) {
-            case 1:
-                System.out.println("No baby this time sorry...");
-                break;
-
-            case 2:
-                int choiceTwo = random.nextInt(2) + 1;
-                switch (choiceTwo) {
-                    case 1:
-                        System.out.println("You got a male, what's its name going to be?");
-                        String male = sc.nextLine();
-                        sheep = new Sheep(name);
-                        break;
-
-                    case 2:
-                        System.out.println("You got a female, what's its name going to be?");
-                        String female = sc.nextLine();
-                        sheep = new Sheep(name);
-
-                        //System.out.println("Name your chicken");
-                        //String n = sc.nextLine();
-                        //chicken = new Chicken(name);
-
-
-                }
-        }
     }
 
     @Override
     public void isDead() {
-        System.out.println("Your sheep is dead... \n Sorry");
+        System.out.println("Your Sheep " + name + " is dead");
+
     }
 
     @Override
     public void setGender(String gender) {
-        this.gender = gender;
-
-    }
+        this.gender = gender;    }
 
     @Override
     public String getGender() {
         return gender;
+    }
+
+    @Override
+    public Integer getHealth() {
+        return  health;
+    }
+
+    @Override
+    public String showHealth() {
+        if (health <= 0){
+            isDead();
+        }
+        else if (age == maxAge)
+        {
+            isDead();
+        }
+        health = health - decline;
+        return health + "%";
+    }
+
+    @Override
+    public Integer getAge() {
+        return age;
+    }
+
+    @Override
+    public String getType() {
+        return type;
     }
 }

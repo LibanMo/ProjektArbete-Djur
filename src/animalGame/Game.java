@@ -3,6 +3,8 @@ package animalGame;
 
 
 
+import animalGame.animals.models.Animal;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,7 +18,6 @@ public class Game {
     Player player;
     List<Player> players; // LISTA AV OBJEKT PLAYER
     Store store;
-
     Scanner scanner = new Scanner(System.in);
 
 
@@ -51,13 +52,12 @@ public class Game {
         players = new ArrayList<>();
         int a = 0;
 
-
+        // for loop med int i=0, i<users; i++
         while (users != a) {
             System.out.println("Player " + (1 + a) + " Name:");
             String val = scanner.next();
-            this. player = new Player(val);
-
-            players.add(this.player);
+            player = new Player(val);
+            players.add(player);
             a++;
         }
         showPlayers();
@@ -71,7 +71,7 @@ public class Game {
         System.out.println("amount of players: " + players.size());
         for (Player i : players) {
             System.out.println("----------------");
-            System.out.println(player.name + " Money: " + i.cash);
+            System.out.println(i.name + " Money: " + i.cash);
         }
 
         nextMove();
@@ -86,22 +86,28 @@ public class Game {
 
         while (rounds > num) {
             for (Player p : players) {
-                System.out.println("\n" + p.name + " Make your move " + p.cash + "\n\n");
+                System.out.println("\n" + p.name + " Make your move " + p.getBalance()+ "\n");
+                System.out.print("----------------------------->");
+                p.getAnimals();
+                p.showFood();
+
+                System.out.println("\n");
                 System.out.println("1. Buy an Animal   2. Buy Foods   3. Feed animal   4. Sell Animal   5. Procreate Animal");
                 int val = scanner.nextInt();
 
                 switch (val) {
                     case 1:
-                        store = new Store(this.player);
-                        store.Welcome();
+                        store = new Store(p);
+                        store.buyAnimal();
 
                         break;
                     case 2:
-                        System.out.println("Option 2");
+                        store = new Store(p);
+                        store.buyFood();
 
                         break;
                     case 3:
-                        System.out.println("Option 3");
+                        p.feedAnimal();
 
                         break;
                     case 4:
@@ -112,14 +118,17 @@ public class Game {
                         System.out.println("Option 5");
                         break;
 
+
                 }
+                    p.DeclineAnimal();
 
             }
-            num++;
 
+            num++; // round finished, add to roundCounter
+        } // end of while loop
 
-        }
-    }
+    } // end of nextMove method
+
 }
 
 
