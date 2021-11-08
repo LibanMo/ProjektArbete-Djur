@@ -87,21 +87,37 @@ public class Chicken implements Animal {
     }
 
     @Override
-    public void proCreate() {
+    public void proCreate(Chicken chicken) {
+        if(chicken.getGender().equalsIgnoreCase("Girl")){
+
+        }
 
         Random random = new Random();
-        int choice = random.nextInt(2)+ 1;
-        switch (choice){
+        int choice = random.nextInt(2) + 1;
+        switch (choice) {
             case 1:
                 System.out.println("No baby this time sorry...");
                 break;
 
             case 2:
-                System.out.println("Name your chicken");
-                String n = sc.nextLine();
-                chicken = new Chicken(n);
+                int choiceTwo = random.nextInt(2) + 1;
+                switch (choiceTwo) {
+                    case 1:
+                        System.out.println("You got a male, what's its name going to be?");
+                        String male = sc.nextLine();
+                        chicken = new Chicken(male);
+                        break;
+
+                    case 2:
+                        System.out.println("You got a female, what's its name going to be?");
+                        String female = sc.nextLine(female);
+                        chicken = new Chicken(name);
+
+
+                }
         }
-    }
+
+}
 
     @Override
     public void isDead() {

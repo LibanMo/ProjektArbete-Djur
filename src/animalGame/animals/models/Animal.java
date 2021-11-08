@@ -16,7 +16,7 @@ public interface Animal {
 
     void feed(String food); // Mata djuret, detta leder till Health ökar.
 
-    void proCreate(); // Djuren parar sig.
+    void proCreate(Animal animal); // Djuren parar sig.
 
     void isDead(); // Ifall djuret hälsa = 0 så är djuret död #Boolean.
 
