@@ -3,95 +3,93 @@ package animalGame.animals;
 import animalGame.animals.models.Animal;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Cow implements Animal {
 
     public String name;
+    String type = "Cow";
 
     int health = 100;
     Boolean isAlive;
     String gender;
-    Cow cow; // KALLA DENNA VARIABEL NÄR PROCREATE BLIR TILL ETT NYTT OBJEKT
-    Scanner sc = new Scanner(System.in);
+    String b = Integer.toString(health);
+    int decline;
+    String eatsOnly = "Wheat";
+    int age = 1;
 
-    public Cow(String name){
+    public Cow(String name) {
         this.name = name;
     }
 
 
     @Override
-    public void healthDecline() {
+    public String getName() {
+        return name;
+    }
 
+    @Override
+    public String animalType() {
+        return type;
+    }
+
+    @Override
+    public void healthDecline() {
         Random random = new Random();
-        int choice = random.nextInt(3)+ 1;
-        switch(choice){
+        int choice = random.nextInt(3) + 1;
+        switch (choice) {
+
             case 1:
-                health = health - 10;
+                decline = 10;
+
                 break;
 
             case 2:
-                health = health - 20;
+                decline = 20;
+
                 break;
 
             case 3:
-                health = health - 30;
+                decline = 30;
+
                 break;
         }
 
+    }
+
+    @Override
+    public String getDecline() {
+        return "-" + decline;
     }
 
     @Override
     public void health() {
-        System.out.println("Your Cow " + name + " Health: " + health);
+
     }
 
     @Override
-    public void feed() {
+    public void feed(String food) {
         if (health == 100) {
             System.out.println("Health is already full");
-        } else {
-            health = health + 10;
-        }
+        } else if (food.equalsIgnoreCase(eatsOnly)) {
+            System.out.println("Yummy!");
+            health += 10;
 
+        } else {
+            System.out.println("Your Cow cant eat " + food);
+            System.out.println("Cow only eats " + eatsOnly);
+
+        }
     }
 
     @Override
     public void proCreate() {
 
-        Random random = new Random();
-        int choice = random.nextInt(2) + 1;
-        switch (choice) {
-            case 1:
-                System.out.println("No baby this time sorry...");
-                break;
-
-            case 2:
-                int choiceTwo = random.nextInt(2) + 1;
-                switch (choiceTwo) {
-                    case 1:
-                        System.out.println("You got a male, what's its name going to be?");
-                        String male = sc.nextLine();
-                        cow = new Cow(name);
-                        break;
-
-                    case 2:
-                        System.out.println("You got a female, what's its name going to be?");
-                        String female = sc.nextLine();
-                        cow = new Cow(name);
-
-                        //System.out.println("Name your chicken");
-                        //String n = sc.nextLine();
-                        //chicken = new Chicken(name);
-
-
-                }
-        }
     }
 
     @Override
     public void isDead() {
-        System.out.println("Your cow is dead... \n Sorry");
+        System.out.println("You Cow " + name + " is dead");
+
     }
 
     @Override
@@ -104,4 +102,18 @@ public class Cow implements Animal {
     public String getGender() {
         return gender;
     }
+
+    @Override
+    public String getHealth() {
+        if (health <= 0) {
+            isDead();
+        }
+        return health - decline + "%";
+    }
+
+    @Override
+    public Integer getAge() {
+        return age;
+    }
 }
+
