@@ -112,6 +112,7 @@ public class Chicken implements Animal {
                         System.out.println("You got a female, what's its name going to be?");
                         String female = sc.nextLine(female);
                         chicken = new Chicken(name);
+                        break;
 
 
                 }
