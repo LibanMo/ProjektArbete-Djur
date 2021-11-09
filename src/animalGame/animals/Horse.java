@@ -55,7 +55,6 @@ public class Horse implements Animal {
                 break;
         }
 
-
     }
 
     @Override
@@ -65,15 +64,13 @@ public class Horse implements Animal {
 
     @Override
     public void health() {
-        System.out.println(health + "%");
+        System.out.println("Your Horse " + name + " Health: " + health);
     }
 
     @Override
     public void feed(String food) {
-        if (health == 100) {
-            System.out.println("Health is already full");
-        }
-        else if (food.equalsIgnoreCase(eatsOnly)){
+
+        if (food.equalsIgnoreCase(eatsOnly)){
             System.out.println("Yummy!");
             health += 10;
 
@@ -87,16 +84,48 @@ public class Horse implements Animal {
     }
 
     @Override
-    public void proCreate() {
+    public void proCreate(Horse horse) {
+        if(horse.getGender().equalsIgnoreCase("Girl")){
+
+        }
+
+        Random random = new Random();
+        int choice = random.nextInt(2) + 1;
+        switch (choice) {
+            case 1:
+                System.out.println("No baby this time sorry...");
+                break;
+
+            case 2:
+                int choiceTwo = random.nextInt(2) + 1;
+                switch (choiceTwo) {
+                    case 1:
+                        System.out.println("You got a male, what's its name going to be?");
+                        String male = sc.nextLine();
+                        horse = new Horse(male);
+                        break;
+
+                    case 2:
+                        System.out.println("You got a female, what's its name going to be?");
+                        String female = sc.nextLine(female);
+                        horse = new Horse(name);
+
+
+                }
+        }
 
     }
 
     @Override
     public void isDead() {
         System.out.println("Your Horse " + name + " is dead");
-
     }
 
+    @Override
+    public void setGender(String gender) {
+        this.gender = gender;
+
+    }
 
     @Override
     public String getGender() {
@@ -105,14 +134,16 @@ public class Horse implements Animal {
 
     @Override
     public Integer getHealth() {
-        return health;
+        return  health;
     }
 
     @Override
-    public  String showHealth() {
-        if (health <= 0){
+    public String showHealth() {
+        if (health <= 0 ){
             isDead();
         }
+
+
         health = health - decline;
         return health + "%";
     }
@@ -126,10 +157,5 @@ public class Horse implements Animal {
     public String getType() {
         return type;
     }
-
-
-    @Override
-    public void setGender(String  gender) {
-        this.gender = gender;
-    }
 }
+

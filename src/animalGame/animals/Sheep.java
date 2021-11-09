@@ -35,7 +35,6 @@ public class Sheep implements Animal {
     @Override
     public void healthDecline() {
         Random random = new Random();
-        age ++;
         int choice = random.nextInt(3)+1;
         switch (choice) {
 
@@ -63,18 +62,14 @@ public class Sheep implements Animal {
     }
 
     @Override
-
-    // Djurets Hälsa skav visas med denna metod
     public void health() {
-
+        System.out.println("Your Sheep " + name + " Health: " + health);
     }
 
     @Override
     public void feed(String food) {
-        if (health == 100) {
-            System.out.println("Health is already full");
-        }
-        else if (food.equalsIgnoreCase(eatsOnly)){
+
+        if (food.equalsIgnoreCase(eatsOnly)){
             System.out.println("Yummy!");
             health += 10;
 
@@ -86,20 +81,50 @@ public class Sheep implements Animal {
 
         }
     }
+
     @Override
-    public void proCreate() {
+    public void proCreate(Sheep sheep) {
+        if(sheep.getGender().equalsIgnoreCase("Girl")){
+
+        }
+
+        Random random = new Random();
+        int choice = random.nextInt(2) + 1;
+        switch (choice) {
+            case 1:
+                System.out.println("No baby this time sorry...");
+                break;
+
+            case 2:
+                int choiceTwo = random.nextInt(2) + 1;
+                switch (choiceTwo) {
+                    case 1:
+                        System.out.println("You got a male, what's its name going to be?");
+                        String male = sc.nextLine();
+                        sheep = new Sheep(male);
+                        break;
+
+                    case 2:
+                        System.out.println("You got a female, what's its name going to be?");
+                        String female = sc.nextLine(female);
+                        sheep = new Sheep(name);
+
+
+                }
+        }
 
     }
 
     @Override
     public void isDead() {
         System.out.println("Your Sheep " + name + " is dead");
-
     }
 
     @Override
     public void setGender(String gender) {
-        this.gender = gender;    }
+        this.gender = gender;
+
+    }
 
     @Override
     public String getGender() {
@@ -113,13 +138,11 @@ public class Sheep implements Animal {
 
     @Override
     public String showHealth() {
-        if (health <= 0){
+        if (health <= 0 ){
             isDead();
         }
-        else if (age == maxAge)
-        {
-            isDead();
-        }
+
+
         health = health - decline;
         return health + "%";
     }
@@ -134,3 +157,5 @@ public class Sheep implements Animal {
         return type;
     }
 }
+
+
