@@ -115,7 +115,7 @@ public class Game {
                         break;
 
                     case 5:
-                        System.out.println("Option 5");
+                        player.proCreateAnimals();
                         break;
 
 

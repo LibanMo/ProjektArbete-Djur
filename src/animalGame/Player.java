@@ -33,7 +33,6 @@ public class Player {
     Player(String name) {
         this.name = name;
 
-
     }
 
 
@@ -134,8 +133,73 @@ public class Player {
 
         }
 
+            }
+
+            public void proCreateAnimals(){
+                System.out.println("Choose one animal type to procreate");
+                System.out.println("1. Chicken   2. Sheep   3. Goat   4. Cow   5. Horse");
+                int switcher = sc.nextInt();
+                switch(switcher){
+                    case 1:
+                        for(int i = 0; i < animals.size(); i++){
+                            if(animals.get(i).getType().equalsIgnoreCase("Chicken")) {
+                                System.out.println(i + ": " + animals.get(i).animalType() + " Gender: " + animals.get(i).getGender());
+                            }
+                        }
+                        System.out.println("Choose one Male chicken, Enter the index next to the animal");
+                        int maleChoice = sc.nextInt();
+                        for (int i = 0; i < animals.size(); i++){
+                            if(animals.get(i).getType().equalsIgnoreCase("Chicken")){
+                                if(animals.get(i).getGender().equalsIgnoreCase("Boy")){
+                                    System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                                }
+                            }
+                        }
+                        System.out.println("Choose a Female chicken, Enter the index next to the animal");
+                        int femaleChoice = sc.nextInt();
+                        for(int i = 0; i < animals.size(); i++){
+                            if(animals.get(i).getType().equalsIgnoreCase("Chicken")){
+                                if(animals.get(i).getGender().equalsIgnoreCase("Girl")){
+                                    System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                                }
+                            }
+                        }
+                        break;
 
 
+                    case 2:
+                        for(int i = 0; i < animals.size(); i++){
+                            if(animals.get(i).getType().equalsIgnoreCase("Sheep")) {
+                                System.out.println(animals.get(i).animalType() + " Gender: " + animals.get(i).getGender());
+                            }
+                        }
+                        break;
+
+                    case 3:
+                        for(int i = 0; i < animals.size(); i++){
+                            if(animals.get(i).getType().equalsIgnoreCase("Goat")) {
+                                System.out.println(animals.get(i).animalType() + " Gender: " + animals.get(i).getGender());
+                            }
+                        }
+                        break;
+
+                    case 4:
+                        for(int i = 0; i < animals.size(); i++){
+                            if(animals.get(i).getType().equalsIgnoreCase("Cow")) {
+                                System.out.println(animals.get(i).animalType() + " Gender: " + animals.get(i).getGender());
+                            }
+                        }
+
+                    case 5:
+                        for(int i = 0; i < animals.size(); i++){
+                            if(animals.get(i).getType().equalsIgnoreCase("Horse")) {
+                                System.out.println(animals.get(i).animalType() + " Gender: " + animals.get(i).getGender());
+                            }
+                        }
+                        break;
+
+
+                }
 
 
             }

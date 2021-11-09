@@ -339,7 +339,7 @@ public class Store {
            String whatType = player.animals.get(choice).getType();
            switch (whatType){
                case "Chicken":
-                   payOut =(chickenPrice * (player.animals.get(choice).getHealth())) - (player.animals.get(choice).getAge() * 5);
+                   payOut =(chickenPrice * (player.animals.get(choice).getHealth())/100) - (player.animals.get(choice).getAge() * 5);
                    player.animals.remove(choice);
                    System.out.println("The price for your Chicken is "+ payOut);
                    int newer = player.cash + payOut;
@@ -347,7 +347,7 @@ public class Store {
                    break;
 
                case "Sheep":
-                   payOut =(sheepPrice * (player.animals.get(choice).getHealth()/100)) - player.animals.get(choice).getAge() * 5;
+                   payOut = (sheepPrice * (player.animals.get(choice).getHealth())/100) - (player.animals.get(choice).getAge() * 5);
                    player.animals.remove(choice);
                    System.out.println("The price for your Sheep is "+ payOut);
                    newer = player.cash + payOut;
@@ -355,7 +355,7 @@ public class Store {
                    break;
 
                case "Goat":
-                   payOut =((goatPrice * player.animals.get(choice).getHealth()/100)) - player.animals.get(choice).getAge() * 5;
+                   payOut = (goatPrice * (player.animals.get(choice).getHealth())/100) - (player.animals.get(choice).getAge() * 5);
                    player.animals.remove(choice);
                    System.out.println("The price for your Goat is "+ payOut);
                    newer = player.cash + payOut;
@@ -363,7 +363,7 @@ public class Store {
                    break;
 
                case "Cow":
-                   payOut =((cowPrice * player.animals.get(choice).getHealth()/100)) - player.animals.get(choice).getAge() * 5;
+                   payOut = (cowPrice * (player.animals.get(choice).getHealth())/100) - (player.animals.get(choice).getAge() * 5);
                    player.animals.remove(choice);
                    System.out.println("The price for your Cow is "+ payOut);
                    newer = player.cash + payOut;
@@ -371,7 +371,7 @@ public class Store {
                    break;
 
                case "Horse":
-                   payOut =((horsePrice * player.animals.get(choice).getHealth()/100)) - player.animals.get(choice).getAge() * 5;
+                   payOut = (horsePrice * (player.animals.get(choice).getHealth())/100) - (player.animals.get(choice).getAge() * 5);
                    player.animals.remove(choice);
                    System.out.println("The price for your Horse is "+ payOut);
                    newer = player.cash + payOut;
