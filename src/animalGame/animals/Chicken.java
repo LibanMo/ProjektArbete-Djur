@@ -86,7 +86,7 @@ public class Chicken implements Animal {
         }
     }
 
-    (djurpris*(något/100))) -(något*5);
+
 
     @Override
     public void proCreate() {

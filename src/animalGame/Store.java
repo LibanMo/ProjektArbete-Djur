@@ -340,6 +340,17 @@ public class Store {
                case "Chicken":
                    int payOut =(chickenPrice * player.animals.get(choice).getHealth()) - player.animals.get(choice).getAge() * 5;
 
+                   int choice = sc.nextInt();
+                   String whatType = player.animals.get(choice).getType();
+                   switch (whatType){
+                       case "Chicken":
+                           payOut =(chickenPrice * (player.animals.get(choice).getHealth())) - (player.animals.get(choice).getAge() * 5);
+                           player.animals.remove(choice);
+                           System.out.println("The price for your Chicken is "+ payOut);
+                           int newer = player.cash + payOut;
+                           player.setBalance(newer);
+                           break;
+
 
            }
 
