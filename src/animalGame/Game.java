@@ -111,11 +111,11 @@ public class Game {
 
                         break;
                     case 4:
-                        System.out.println("Option 4");
+                        store.sellAnimals();
                         break;
 
                     case 5:
-                        System.out.println("Option 5");
+                        player.proCreateAnimals();
                         break;
 
 

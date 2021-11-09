@@ -23,13 +23,13 @@ public class Goat implements Animal {
 
     @Override
     public String getName() {
-        return name;    }
+        return name;
+    }
 
     @Override
     public String animalType() {
         return type;
     }
-
 
     @Override
     public void healthDecline() {
@@ -53,7 +53,6 @@ public class Goat implements Animal {
                 break;
         }
 
-
     }
 
     @Override
@@ -63,15 +62,13 @@ public class Goat implements Animal {
 
     @Override
     public void health() {
-
+        System.out.println("Your Goat " + name + " Health: " + health);
     }
 
     @Override
     public void feed(String food) {
-        if (health == 100) {
-            System.out.println("Health is already full");
-        }
-        else if (food.equalsIgnoreCase(eatsOnly)){
+
+        if (food.equalsIgnoreCase(eatsOnly)){
             System.out.println("Yummy!");
             health += 10;
 
@@ -85,19 +82,47 @@ public class Goat implements Animal {
     }
 
     @Override
-    public void proCreate() {
+    public void proCreate(Goat goat) {
+        if(goat.getGender().equalsIgnoreCase("Girl")){
+
+        }
+
+        Random random = new Random();
+        int choice = random.nextInt(2) + 1;
+        switch (choice) {
+            case 1:
+                System.out.println("No baby this time sorry...");
+                break;
+
+            case 2:
+                int choiceTwo = random.nextInt(2) + 1;
+                switch (choiceTwo) {
+                    case 1:
+                        System.out.println("You got a male, what's its name going to be?");
+                        String male = sc.nextLine();
+                        goat = new Goat(male);
+                        break;
+
+                    case 2:
+                        System.out.println("You got a female, what's its name going to be?");
+                        String female = sc.nextLine(female);
+                        goat = new Goat(name);
+
+
+                }
+        }
 
     }
 
     @Override
     public void isDead() {
         System.out.println("Your Goat " + name + " is dead");
-
     }
 
     @Override
     public void setGender(String gender) {
         this.gender = gender;
+
     }
 
     @Override
@@ -107,14 +132,16 @@ public class Goat implements Animal {
 
     @Override
     public Integer getHealth() {
-        return health;
+        return  health;
     }
 
     @Override
     public String showHealth() {
-        if (health <= 0){
+        if (health <= 0 ){
             isDead();
         }
+
+
         health = health - decline;
         return health + "%";
     }
@@ -129,3 +156,5 @@ public class Goat implements Animal {
         return type;
     }
 }
+
+

@@ -35,7 +35,7 @@ public class Cow implements Animal {
     @Override
     public void healthDecline() {
         Random random = new Random();
-        int choice = random.nextInt(3) + 1;
+        int choice = random.nextInt(3)+1;
         switch (choice) {
 
             case 1:
@@ -63,33 +63,61 @@ public class Cow implements Animal {
 
     @Override
     public void health() {
-
+        System.out.println("Your Cow " + name + " Health: " + health);
     }
 
     @Override
     public void feed(String food) {
-        if (health == 100) {
-            System.out.println("Health is already full");
-        } else if (food.equalsIgnoreCase(eatsOnly)) {
+
+        if (food.equalsIgnoreCase(eatsOnly)){
             System.out.println("Yummy!");
             health += 10;
 
-        } else {
-            System.out.println("Your Cow cant eat " + food);
+        }
+
+        else  {
+            System.out.println("Your Cow cant eat " + food );
             System.out.println("Cow only eats " + eatsOnly);
 
         }
     }
 
     @Override
-    public void proCreate() {
+    public void proCreate(Cow cow) {
+        if(cow.getGender().equalsIgnoreCase("Girl")){
+
+        }
+
+        Random random = new Random();
+        int choice = random.nextInt(2) + 1;
+        switch (choice) {
+            case 1:
+                System.out.println("No baby this time sorry...");
+                break;
+
+            case 2:
+                int choiceTwo = random.nextInt(2) + 1;
+                switch (choiceTwo) {
+                    case 1:
+                        System.out.println("You got a male, what's its name going to be?");
+                        String male = sc.nextLine();
+                        cow = new Cow(male);
+                        break;
+
+                    case 2:
+                        System.out.println("You got a female, what's its name going to be?");
+                        String female = sc.nextLine(female);
+                        cow = new Cow(name);
+
+
+                }
+        }
 
     }
 
     @Override
     public void isDead() {
-        System.out.println("You Cow " + name + " is dead");
-
+        System.out.println("Your Cow " + name + " is dead");
     }
 
     @Override
@@ -105,14 +133,16 @@ public class Cow implements Animal {
 
     @Override
     public Integer getHealth() {
-        return health;
+        return  health;
     }
 
     @Override
     public String showHealth() {
-        if (health <= 0) {
+        if (health <= 0 ){
             isDead();
         }
+
+
         health = health - decline;
         return health + "%";
     }
