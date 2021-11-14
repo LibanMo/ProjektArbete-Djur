@@ -19,6 +19,7 @@ public class Game {
     List<Player> players; // LISTA AV OBJEKT PLAYER
     Store store;
     Scanner scanner = new Scanner(System.in);
+    String winnerName;
 
 
     // Konstruktor
@@ -139,8 +140,26 @@ public class Game {
 
             num++; // round finished, add to roundCounter
         } // end of while loop
+        endGame();
+    }// end of nextMove method
 
-    } // end of nextMove method
+
+
+    void endGame() {
+        int largest = players.get(0).getBalance();
+        for(Player p : players){
+            store.sellAllAnimals();
+
+        }
+        for (int i = 0; i < players.size(); i++){
+            if(players.get(i).getBalance() > largest){
+                largest = players.get(i).getBalance();
+                winnerName = players.get(i).getName();
+            }
+        }
+        System.out.println("The winner is: " + winnerName + " Balance: " + largest );
+
+    }
 
 }
 

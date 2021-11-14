@@ -3,6 +3,7 @@ package animalGame.animals;
 import animalGame.Player;
 import animalGame.animals.models.Animal;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -104,6 +105,7 @@ public class Chicken implements Animal {
 
     @Override
     public Integer getHealth() {
+
         return health;
     }
 
@@ -132,6 +134,7 @@ public class Chicken implements Animal {
 
     @Override
     public void isDead() {
+
 
     }
 

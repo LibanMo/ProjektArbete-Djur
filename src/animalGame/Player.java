@@ -52,12 +52,18 @@ public class Player {
 
     public void getAnimals() {
         for (Animal animal : animals) {
-            multipleValues.put(animal.animalType(), new ArrayList<String>());
-            multipleValues.get(animal.animalType()).add(animal.getName());
-            multipleValues.get(animal.animalType()).add(animal.getGender());
-            multipleValues.get(animal.animalType()).add(animal.showHealth());
-            multipleValues.get(animal.animalType()).add(animal.getDecline());
-            System.out.println(multipleValues);
+            if (animal.getHealth() <= 0){
+                multipleValues.remove(animal.animalType());
+            }
+            else {
+                multipleValues.put(animal.animalType(), new ArrayList<String>());
+                multipleValues.get(animal.animalType()).add(animal.getName());
+                multipleValues.get(animal.animalType()).add(animal.getGender());
+                multipleValues.get(animal.animalType()).add(animal.showHealth());
+                multipleValues.get(animal.animalType()).add(animal.getDecline());
+                System.out.println(multipleValues);
+            }
+
         }
     }
 
@@ -101,8 +107,10 @@ public class Player {
 
         switch (choice) {
             case 1:
+
                 animals.get(whoToFeed).feed("Wheat");
                 for (Food f : myFood) {
+
                     if (f.getType().equalsIgnoreCase("Wheat")) {
                         myFood.remove(f);
                         break;
@@ -306,6 +314,11 @@ public class Player {
     public void addBaby(Animal animal) {
         animals.add(animal);
     }
+
+
+
+
+
 
 }
 
