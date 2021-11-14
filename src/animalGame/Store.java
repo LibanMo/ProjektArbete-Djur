@@ -371,6 +371,50 @@ public class Store {
 
         }
     }
+
+    public void sellAllAnimals() {
+
+        for(Animal a : player.animals){
+            String animalType = a.getType();
+            switch(animalType){
+                case "Chicken":
+                    payOut = (chickenPrice * (a.getHealth()) / 100) - (a.getAge() * 5);
+                    int newer = player.cash + payOut;
+                    player.setBalance(newer);
+                    break;
+
+                case "Sheep":
+                    payOut = (sheepPrice * (a.getHealth()) / 100) - (a.getAge() * 5);
+                    newer = player.cash + payOut;
+                    player.setBalance(newer);
+                    break;
+
+                case "Goat":
+                    payOut = (goatPrice * (a.getHealth()) / 100) - (a.getAge() * 5);
+                    newer = player.cash + payOut;
+                    player.setBalance(newer);
+                    break;
+
+                case "Cow":
+                    payOut = (cowPrice * (a.getHealth()) / 100) - (a.getAge() * 5);
+                    newer = player.cash + payOut;
+                    player.setBalance(newer);
+                    break;
+
+                case "Horse":
+                    payOut = (horsePrice * (a.getHealth()) / 100) - (a.getAge() * 5);
+                    newer = player.cash + payOut;
+                    player.setBalance(newer);
+                    break;
+
+            }
+
+
+        }
+
+
+
+    }
 }
 
 
