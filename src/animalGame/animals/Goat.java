@@ -3,6 +3,7 @@ package animalGame.animals;
 import animalGame.animals.models.Animal;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Goat implements Animal {
 
@@ -15,9 +16,18 @@ public class Goat implements Animal {
     int decline;
     String eatsOnly = "Soy";
     int age = 1;
+    Goat goat;
+    Scanner sc = new Scanner(System.in);
+
 
     public Goat(String name) {
         this.name = name;
+    }
+
+
+    @Override
+    public void setType(String type) {
+        this.type = type;
     }
 
 
@@ -81,36 +91,37 @@ public class Goat implements Animal {
         }
     }
 
-    @Override
-    public void proCreate(Goat goat) {
-        if(goat.getGender().equalsIgnoreCase("Girl")){
-
-        }
-
-        Random random = new Random();
-        int choice = random.nextInt(2) + 1;
-        switch (choice) {
-            case 1:
-                System.out.println("No baby this time sorry...");
-                break;
-
-            case 2:
-                int choiceTwo = random.nextInt(2) + 1;
-                switch (choiceTwo) {
+    public void proCreate(Animal animal ) {
+        if(animal.getType().equalsIgnoreCase("Goat")){
+            if(animal.getGender().equalsIgnoreCase("Girl")){
+                Random random = new Random();
+                int choice = random.nextInt(2) + 1;
+                switch (choice) {
                     case 1:
-                        System.out.println("You got a male, what's its name going to be?");
-                        String male = sc.nextLine();
-                        goat = new Goat(male);
+                        System.out.println("No baby this time sorry...");
                         break;
 
                     case 2:
-                        System.out.println("You got a female, what's its name going to be?");
-                        String female = sc.nextLine(female);
-                        goat = new Goat(name);
+                        int choiceTwo = random.nextInt(2) + 1;
+                        switch (choiceTwo) {
+                            case 1:
+                                System.out.println("You got a male, what's its name going to be?");
+                                String male = sc.nextLine();
+                                goat = new Goat(male);
+                                break;
+
+                            case 2:
+                                System.out.println("You got a female, what's its name going to be?");
+                                String female = sc.nextLine();
+                                goat = new Goat(female);
 
 
+                        }
                 }
+            }
         }
+
+
 
     }
 

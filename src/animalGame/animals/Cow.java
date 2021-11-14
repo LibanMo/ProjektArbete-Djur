@@ -3,12 +3,14 @@ package animalGame.animals;
 import animalGame.animals.models.Animal;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Cow implements Animal {
 
     public String name;
     String type = "Cow";
-
+    Scanner sc = new Scanner(System.in);
+    Cow cow;
     int health = 100;
     Boolean isAlive;
     String gender;
@@ -82,38 +84,8 @@ public class Cow implements Animal {
         }
     }
 
-    @Override
-    public void proCreate(Cow cow) {
-        if(cow.getGender().equalsIgnoreCase("Girl")){
-
-        }
-
-        Random random = new Random();
-        int choice = random.nextInt(2) + 1;
-        switch (choice) {
-            case 1:
-                System.out.println("No baby this time sorry...");
-                break;
-
-            case 2:
-                int choiceTwo = random.nextInt(2) + 1;
-                switch (choiceTwo) {
-                    case 1:
-                        System.out.println("You got a male, what's its name going to be?");
-                        String male = sc.nextLine();
-                        cow = new Cow(male);
-                        break;
-
-                    case 2:
-                        System.out.println("You got a female, what's its name going to be?");
-                        String female = sc.nextLine(female);
-                        cow = new Cow(name);
 
 
-                }
-        }
-
-    }
 
     @Override
     public void isDead() {
@@ -124,6 +96,11 @@ public class Cow implements Animal {
     public void setGender(String gender) {
         this.gender = gender;
 
+    }
+
+    @Override
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
