@@ -3,9 +3,10 @@ package animalGame.animals;
 import animalGame.animals.models.Animal;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Sheep implements Animal {
-
+    Sheep sheep;
     public String name;
     String type = "Sheep";
     int health = 100;
@@ -15,11 +16,16 @@ public class Sheep implements Animal {
     int decline;
     int age = 1;
     int maxAge = 12;
-
+    Scanner sc = new Scanner(System.in);
     String eatsOnly = "Wheat";
 
     public Sheep(String name){
         this.name = name;
+    }
+
+    @Override
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
@@ -82,38 +88,12 @@ public class Sheep implements Animal {
         }
     }
 
-    @Override
-    public void proCreate(Sheep sheep) {
-        if(sheep.getGender().equalsIgnoreCase("Girl")){
-
-        }
-
-        Random random = new Random();
-        int choice = random.nextInt(2) + 1;
-        switch (choice) {
-            case 1:
-                System.out.println("No baby this time sorry...");
-                break;
-
-            case 2:
-                int choiceTwo = random.nextInt(2) + 1;
-                switch (choiceTwo) {
-                    case 1:
-                        System.out.println("You got a male, what's its name going to be?");
-                        String male = sc.nextLine();
-                        sheep = new Sheep(male);
-                        break;
-
-                    case 2:
-                        System.out.println("You got a female, what's its name going to be?");
-                        String female = sc.nextLine(female);
-                        sheep = new Sheep(name);
 
 
-                }
-        }
 
-    }
+
+
+
 
     @Override
     public void isDead() {

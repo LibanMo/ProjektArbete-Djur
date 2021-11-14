@@ -3,6 +3,7 @@ package animalGame.animals.models;
 public interface Animal {
 
 
+    void  setType(String type);
 
     String getName();
 
@@ -16,7 +17,6 @@ public interface Animal {
 
     void feed(String food); // Mata djuret, detta leder till Health ökar.
 
-    void proCreate(Animal animal); // Djuren parar sig.
 
     void isDead(); // Ifall djuret hälsa = 0 så är djuret död #Boolean.
 

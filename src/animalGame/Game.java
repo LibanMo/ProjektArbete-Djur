@@ -24,9 +24,22 @@ public class Game {
     // Konstruktor
     public Game(){
         System.out.println("Hey Welcome"); // HÄLSING INNAN SPEL
+
+        // Choose new game or load old one 1 / 2
+
+        // 1
         startMenu();
 
+        // 2
+        loadFromFile();
     }
+
+    private void loadFromFile() {
+
+        // AnimalSavedInstance objekt;
+
+    }
+
 
     // HÄR INNE LIGGER SPELETS START MENY.
 
