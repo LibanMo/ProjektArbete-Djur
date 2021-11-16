@@ -20,24 +20,36 @@ public class Game {
     Store store;
     Scanner scanner = new Scanner(System.in);
     String winnerName;
+    AnimalSavedInstance save;
 
 
     // Konstruktor
     public Game(){
-        System.out.println("Hey Welcome"); // HÄLSING INNAN SPEL
+        System.out.println("Hey Welcome\n"); // HÄLSING INNAN SPEL
+        System.out.println("1. Start New Game   2. Load Game");
+        int todo = scanner.nextInt();
+        switch(todo){
+            case 1:
+                startMenu();
+                break;
 
-        // Choose new game or load old one 1 / 2
+            case 2:
+                loadFromFile();
 
-        // 1
-        startMenu();
+        }
 
-        // 2
-        loadFromFile();
+
+
+
+
+
     }
 
     private void loadFromFile() {
 
-        // AnimalSavedInstance objekt;
+       AnimalSavedInstance A = new AnimalSavedInstance();
+       A.load();
+       nextMove();
 
     }
 
@@ -97,8 +109,9 @@ public class Game {
 
         // Hur ska jag få spelare separat från listan?
         int num = 0;
+        int a = 0;
 
-        while (rounds > num) {
+        while (rounds > num && a == 0) {
             for (Player p : players) {
                 System.out.println("\n" + p.name + " Make your move " + p.getBalance()+ "\n");
                 System.out.print("----------------------------->");
@@ -106,7 +119,7 @@ public class Game {
                 p.showFood();
 
                 System.out.println("\n");
-                System.out.println("1. Buy an Animal   2. Buy Foods   3. Feed animal   4. Sell Animal   5. Procreate Animal");
+                System.out.println("1. Buy an Animal   2. Buy Foods   3. Feed animal   4. Sell Animal   5. Procreate Animal    6. Save Game");
                 int val = scanner.nextInt();
 
                 switch (val) {
@@ -132,6 +145,14 @@ public class Game {
                         player.proCreateAnimals();
                         break;
 
+                    case 6:
+                        save = new AnimalSavedInstance();
+                        for (Player player : players){
+                            save.save(player, rounds - num);
+                        }
+                        a = 1;
+                        exit();
+                        break;
 
                 }
                     p.DeclineAnimal();
@@ -146,18 +167,31 @@ public class Game {
 
 
     void endGame() {
-        int largest = players.get(0).getBalance();
-        for(Player p : players){
-            store.sellAllAnimals();
+        if (this.store == null ){
 
+            exit();
         }
-        for (int i = 0; i < players.size(); i++){
-            if(players.get(i).getBalance() > largest){
-                largest = players.get(i).getBalance();
-                winnerName = players.get(i).getName();
+
+
+        else {
+            int largest = players.get(0).getBalance();
+            for (Player p : players) {
+                store.sellAllAnimals();
+
             }
+            for (int i = 0; i < players.size(); i++) {
+                if (players.get(i).getBalance() > largest) {
+                    largest = players.get(i).getBalance();
+                    winnerName = players.get(i).getName();
+                }
+            }
+            System.out.println("The winner is: " + winnerName + " Balance: " + largest);
         }
-        System.out.println("The winner is: " + winnerName + " Balance: " + largest );
+
+    }
+    void exit(){
+        System.out.println("The Game is now saved");
+        System.out.println("Exiting Game...");
 
     }
 
