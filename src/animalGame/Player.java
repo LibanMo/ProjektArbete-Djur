@@ -5,7 +5,6 @@ import animalGame.Foods.Soy;
 import animalGame.Foods.Wheat;
 import animalGame.Foods.models.Food;
 import animalGame.animals.models.Animal;
-import animalGame.Foods.Soy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,7 +49,7 @@ public class Player {
         return name;
     }
 
-    public void getAnimals() {
+    public Object getAnimals() {
         for (Animal animal : animals) {
             if (animal.getHealth() <= 0){
                 multipleValues.remove(animal.animalType());
@@ -65,6 +64,7 @@ public class Player {
             }
 
         }
+        return null;
     }
 
     void DeclineAnimal() {
@@ -140,6 +140,21 @@ public class Player {
 
 
         }
+
+    }
+
+    public Animal myAnimals(){
+        if (animals.isEmpty()) {
+            return  null;
+        }
+
+        else {
+            for (Animal anim : animals){
+                return anim;
+
+            }
+        }
+        return  null;
 
     }
 
@@ -314,6 +329,7 @@ public class Player {
     public void addBaby(Animal animal) {
         animals.add(animal);
     }
+
 
 
 
