@@ -2,7 +2,9 @@ package animalGame.Foods;
 
 import animalGame.Foods.models.Food;
 
-public class Wheat extends Food {
+import java.io.Serializable;
+
+public class Wheat extends Food implements Serializable {
     String type = "Wheat";
 
 

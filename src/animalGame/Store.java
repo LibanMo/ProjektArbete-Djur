@@ -6,11 +6,12 @@ import animalGame.Foods.Wheat;
 import animalGame.animals.*;
 import animalGame.animals.models.Animal;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 
 
-public class Store {
+public class Store implements Serializable {
 
     Player player;
     Scanner sc = new Scanner(System.in);
@@ -317,58 +318,67 @@ public class Store {
     }
 
     void sellAnimals() {
+        if(player.animals.isEmpty()) {
+            System.out.println("This Does not work");
+            System.out.println("You need to own animals to sell");
+        }
+
+
+        else {
         System.out.println("Hey! So you want to sell one of ur animals?\n");
         System.out.println("Enter the number next to the animal you wish to sell");
 
-        for (int i = 0; i < player.animals.size(); i++) {
-            System.out.println(i + ": " + player.animals.get(i).animalType() + " Health: " + player.animals.get(i).getHealth() + " Age: " + player.animals.get(i).getAge());
-
-        }
-        int choice = sc.nextInt();
-        String whatType = player.animals.get(choice).getType();
-        switch (whatType) {
-            case "Chicken":
-                payOut = (chickenPrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).getAge() * 5);
-                player.animals.remove(choice);
-                System.out.println("The price for your Chicken is " + payOut);
-                int newer = player.cash + payOut;
-                player.setBalance(newer);
-                break;
-
-            case "Sheep":
-                payOut = (sheepPrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).getAge() * 5);
-                player.animals.remove(choice);
-                System.out.println("The price for your Sheep is " + payOut);
-                newer = player.cash + payOut;
-                player.setBalance(newer);
-                break;
-
-            case "Goat":
-                payOut = (goatPrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).getAge() * 5);
-                player.animals.remove(choice);
-                System.out.println("The price for your Goat is " + payOut);
-                newer = player.cash + payOut;
-                player.setBalance(newer);
-                break;
-
-            case "Cow":
-                payOut = (cowPrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).getAge() * 5);
-                player.animals.remove(choice);
-                System.out.println("The price for your Cow is " + payOut);
-                newer = player.cash + payOut;
-                player.setBalance(newer);
-                break;
-
-            case "Horse":
-                payOut = (horsePrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).getAge() * 5);
-                player.animals.remove(choice);
-                System.out.println("The price for your Horse is " + payOut);
-                newer = player.cash + payOut;
-                player.setBalance(newer);
-                break;
 
 
+            for (int i = 0; i < player.animals.size(); i++) {
+                System.out.println(i + ": " + player.animals.get(i).animalType() + " Health: " + player.animals.get(i).getHealth() + " Age: " + player.animals.get(i).getAge());
 
+            }
+            int choice = sc.nextInt();
+            String whatType = player.animals.get(choice).getType();
+            switch (whatType) {
+                case "Chicken":
+                    payOut = (chickenPrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).getAge() * 5);
+                    player.animals.remove(choice);
+                    System.out.println("The price for your Chicken is " + payOut);
+                    int newer = player.cash + payOut;
+                    player.setBalance(newer);
+                    break;
+
+                case "Sheep":
+                    payOut = (sheepPrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).getAge() * 5);
+                    player.animals.remove(choice);
+                    System.out.println("The price for your Sheep is " + payOut);
+                    newer = player.cash + payOut;
+                    player.setBalance(newer);
+                    break;
+
+                case "Goat":
+                    payOut = (goatPrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).getAge() * 5);
+                    player.animals.remove(choice);
+                    System.out.println("The price for your Goat is " + payOut);
+                    newer = player.cash + payOut;
+                    player.setBalance(newer);
+                    break;
+
+                case "Cow":
+                    payOut = (cowPrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).getAge() * 5);
+                    player.animals.remove(choice);
+                    System.out.println("The price for your Cow is " + payOut);
+                    newer = player.cash + payOut;
+                    player.setBalance(newer);
+                    break;
+
+                case "Horse":
+                    payOut = (horsePrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).getAge() * 5);
+                    player.animals.remove(choice);
+                    System.out.println("The price for your Horse is " + payOut);
+                    newer = player.cash + payOut;
+                    player.setBalance(newer);
+                    break;
+
+
+            }
         }
     }
 

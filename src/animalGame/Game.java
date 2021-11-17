@@ -3,8 +3,6 @@ package animalGame;
 
 
 
-import animalGame.animals.models.Animal;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,12 +13,13 @@ import java.util.Scanner;
 public class Game {
     int users; // Hur många spelare som är med
     int rounds; // ANTALET RUNDOR
-    Player player;
+    Player createdPlayer;
     List<Player> players; // LISTA AV OBJEKT PLAYER
     Store store;
     Scanner scanner = new Scanner(System.in);
     String winnerName;
     AnimalSavedInstance save;
+    int currentRound;
 
 
     // Konstruktor
@@ -35,21 +34,35 @@ public class Game {
 
             case 2:
                 loadFromFile();
-
+                this.nextMove();
+                break;
         }
 
+}
 
+    private void loadFromFile() {
+        System.out.println("Choose a filename");
+        String filename = scanner.next();
+        SavedGame savedGame = FileHandler.loadSavedGame(filename);
+        if(savedGame != null){
+            this.players = savedGame.getPlayers();
+            this.currentRound = savedGame.getCurrentRound();
+            this.rounds = savedGame.getRounds();
 
-
-
+        }
+        else{
+            System.out.println("Exiting game...");
+        }
 
     }
 
-    private void loadFromFile() {
+    private void saveToFile(){
+        System.out.println("Choose a filename to save");
+        String newFile = scanner.next();
+        SavedGame savedGame = new SavedGame(rounds, currentRound, players);
+        FileHandler.saveGameRuntime(savedGame, newFile);
 
-       AnimalSavedInstance A = new AnimalSavedInstance();
-       A.load();
-       nextMove();
+
 
     }
 
@@ -82,8 +95,8 @@ public class Game {
         while (users != a) {
             System.out.println("Player " + (1 + a) + " Name:");
             String val = scanner.next();
-            player = new Player(val);
-            players.add(player);
+            createdPlayer = new Player(val);
+            players.add(createdPlayer);
             a++;
         }
         showPlayers();
@@ -108,10 +121,10 @@ public class Game {
     public void nextMove() {
 
         // Hur ska jag få spelare separat från listan?
-        int num = 0;
-        int a = 0;
+        currentRound = 0;
 
-        while (rounds > num && a == 0) {
+
+        while (rounds > currentRound ) {
             for (Player p : players) {
                 System.out.println("\n" + p.name + " Make your move " + p.getBalance()+ "\n");
                 System.out.print("----------------------------->");
@@ -134,32 +147,31 @@ public class Game {
 
                         break;
                     case 3:
+
                         p.feedAnimal();
 
                         break;
                     case 4:
+                        store = new Store(p);
                         store.sellAnimals();
                         break;
 
                     case 5:
-                        player.proCreateAnimals();
+                        p.proCreateAnimals(); // *WAS PLAYER.PROCREATEANIMALS() BEFORE
                         break;
 
                     case 6:
-                        save = new AnimalSavedInstance();
-                        for (Player player : players){
-                            save.save(player, rounds - num);
-                        }
-                        a = 1;
+                        saveToFile();
+
                         exit();
-                        break;
+
 
                 }
                     p.DeclineAnimal();
 
             }
 
-            num++; // round finished, add to roundCounter
+            currentRound++; // round finished, add to roundCounter
         } // end of while loop
         endGame();
     }// end of nextMove method
@@ -192,6 +204,7 @@ public class Game {
     void exit(){
         System.out.println("The Game is now saved");
         System.out.println("Exiting Game...");
+        System.exit(0);
 
     }
 

@@ -1,36 +1,38 @@
 package animalGame.animals.models;
 
-public interface Animal {
+import java.io.Serializable;
+
+public abstract class Animal implements Serializable{
 
 
-    void  setType(String type);
+    public abstract void  setType(String type);
 
-    String getName();
+    public abstract String getName();
 
-    String animalType();
+    public abstract String animalType();
 
-    void healthDecline();
+    public abstract void healthDecline();
 
-    String getDecline();
+   public abstract String getDecline();
 
-    void health(); // Visar djurets hälsa.
+   public abstract void health(); // Visar djurets hälsa.
 
-    void feed(String food); // Mata djuret, detta leder till Health ökar.
+   public abstract void feed(String food); // Mata djuret, detta leder till Health ökar.
 
 
-    void isDead(); // Ifall djuret hälsa = 0 så är djuret död #Boolean.
+   public abstract void isDead(); // Ifall djuret hälsa = 0 så är djuret död #Boolean.
 
-    void setGender(String  gender);
+   public abstract void setGender(String  gender);
 
-     String getGender();
+   public abstract String getGender();
 
-     Integer getHealth();
+   public abstract Integer getHealth();
 
-    String showHealth();
+   public abstract String showHealth();
 
-    Integer getAge();
+   public abstract Integer getAge();
 
-    String getType();
+   public abstract String getType();
 
 
 /**

@@ -1,5 +1,7 @@
 package animalGame.Foods.models;
 
-public abstract class Food {
+import java.io.Serializable;
+
+public abstract class Food implements Serializable {
     public abstract String getType();
 }

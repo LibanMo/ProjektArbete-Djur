@@ -3,11 +3,12 @@ package animalGame;
 import animalGame.animals.*;
 import animalGame.animals.models.Animal;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
-public class BabyFactory {
+public class BabyFactory implements Serializable {
 
     Cow cow;
     Sheep sheep;
@@ -16,9 +17,10 @@ public class BabyFactory {
     Goat goat;
 
 
-    Scanner sc = new Scanner(System.in);
-
     public void proCreate(Player player, Animal animalMale, Animal animalFemale) {
+        Scanner sc = new Scanner(System.in);
+
+
         if (Objects.equals(animalMale.getType(), animalFemale.getType())) {
             if (animalFemale.getGender().equalsIgnoreCase("Girl")) {
                 Random random = new Random();
