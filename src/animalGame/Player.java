@@ -6,12 +6,13 @@ import animalGame.Foods.Wheat;
 import animalGame.Foods.models.Food;
 import animalGame.animals.models.Animal;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 
-public class Player {
+public class Player implements Serializable {
     String name;
     int cash = 5000;
 
@@ -19,7 +20,7 @@ public class Player {
     Wheat wheat = new Wheat();
     Corn corn = new Corn();
     Store store;
-    Scanner sc = new Scanner(System.in);
+
     HashMap<String, ArrayList<String>> multipleValues = new HashMap<String, ArrayList<String>>();
     BabyFactory BabyFactory = new BabyFactory();
 
@@ -92,6 +93,11 @@ public class Player {
     //  HÄR INNE KOMMER JAG KUNNA MATA DJURET, DET SOM KRÄVS ÄR ETT SÄTT INDEX DJURET MED INT I FÖR ATT SEDAN VÄLJA DEN
 
     void feedAnimal() {
+        Scanner sc = new Scanner(System.in);
+        if(animals.isEmpty()){
+            System.out.println("U dont hav");
+        }
+
         System.out.println("Which Animal would you want to feed");
         System.out.println("Enter the number next to your animal");
         int i = 0;
@@ -101,17 +107,21 @@ public class Player {
             i++;
 
         }
-        int whoToFeed = sc.nextInt();
+        int whoToFeed = Integer.parseInt(sc.nextLine());
         System.out.println("1. Wheat   2. Soy   3. Corn  ");
-        int choice = sc.nextInt();
+        int choice = Integer.parseInt(sc.nextLine());
 
         switch (choice) {
             case 1:
+                if(myFood.isEmpty()){
+                    System.out.println("You dont have any food");
+                }
 
-                animals.get(whoToFeed).feed("Wheat");
+
                 for (Food f : myFood) {
 
                     if (f.getType().equalsIgnoreCase("Wheat")) {
+                        animals.get(whoToFeed).feed("Wheat");
                         myFood.remove(f);
                         break;
                     }
@@ -141,6 +151,7 @@ public class Player {
 
         }
 
+
     }
 
     public Animal myAnimals(){
@@ -159,9 +170,12 @@ public class Player {
     }
 
     public void proCreateAnimals() {
+
+        Scanner sc = new Scanner(System.in);
+
         System.out.println("Choose one animal type to procreate");
         System.out.println("1. Chicken   2. Sheep   3. Goat   4. Cow   5. Horse");
-        int switcher = sc.nextInt();
+        int switcher = Integer.parseInt(sc.nextLine());
         switch (switcher) {
             case 1:
                 for (int i = 0; i < animals.size(); i++) {
@@ -179,7 +193,7 @@ public class Player {
                         }
                     }
                 }
-                int chickenMaleChoice = sc.nextInt();
+                int chickenMaleChoice = Integer.parseInt(sc.nextLine());
                 System.out.println("Choose a Female chicken, Enter the index next to the animal");
 
                 for (int i = 0; i < animals.size(); i++) {
@@ -189,7 +203,7 @@ public class Player {
                         }
                     }
                 }
-                int chickenFemaleChoice = sc.nextInt();
+                int chickenFemaleChoice = Integer.parseInt(sc.nextLine());
                 // animals.get(maleChoice).proCreate(animals.get(femaleChoice));
                 BabyFactory.proCreate(this, animals.get(chickenMaleChoice), animals.get(chickenFemaleChoice));
                 break;
@@ -211,7 +225,7 @@ public class Player {
                         }
                     }
                 }
-                int sheepMaleChoice = sc.nextInt();
+                int sheepMaleChoice = Integer.parseInt(sc.nextLine());
                 System.out.println("Choose a Female Sheep, Enter the index next to the animal");
 
                 for (int i = 0; i < animals.size(); i++) {
@@ -221,7 +235,7 @@ public class Player {
                         }
                     }
                 }
-                int sheepFemaleChoice = sc.nextInt();
+                int sheepFemaleChoice = Integer.parseInt(sc.nextLine());
                 // animals.get(maleChoice).proCreate(animals.get(femaleChoice));
                 BabyFactory.proCreate(this, animals.get(sheepMaleChoice), animals.get(sheepFemaleChoice));
 
@@ -243,7 +257,7 @@ public class Player {
                         }
                     }
                 }
-                int goatMaleChoice = sc.nextInt();
+                int goatMaleChoice = Integer.parseInt(sc.nextLine());;
                 System.out.println("Choose a Female Goat, Enter the index next to the animal");
 
                 for (int i = 0; i < animals.size(); i++) {
@@ -253,7 +267,7 @@ public class Player {
                         }
                     }
                 }
-                int goatFemaleChoice = sc.nextInt();
+                int goatFemaleChoice = Integer.parseInt(sc.nextLine());
                 // animals.get(maleChoice).proCreate(animals.get(femaleChoice));
                 BabyFactory.proCreate(this, animals.get(goatMaleChoice), animals.get(goatFemaleChoice));
                 break;
@@ -274,7 +288,7 @@ public class Player {
                         }
                     }
                 }
-                int cowMaleChoice = sc.nextInt();
+                int cowMaleChoice = Integer.parseInt(sc.nextLine());
                 System.out.println("Choose a Female Cow, Enter the index next to the animal");
 
                 for (int i = 0; i < animals.size(); i++) {
@@ -284,7 +298,7 @@ public class Player {
                         }
                     }
                 }
-                int cowFemaleChoice = sc.nextInt();
+                int cowFemaleChoice = Integer.parseInt(sc.nextLine());
                 // animals.get(maleChoice).proCreate(animals.get(femaleChoice));
                 BabyFactory.proCreate(this, animals.get(cowMaleChoice), animals.get(cowFemaleChoice));
                 break;
@@ -305,7 +319,7 @@ public class Player {
                         }
                     }
                 }
-                int horseMaleChoice = sc.nextInt();
+                int horseMaleChoice =Integer.parseInt(sc.nextLine());
                 System.out.println("Choose a Female Horse, Enter the index next to the animal");
 
                 for (int i = 0; i < animals.size(); i++) {
@@ -315,7 +329,7 @@ public class Player {
                         }
                     }
                 }
-                int horseFemaleChoice = sc.nextInt();
+                int horseFemaleChoice = Integer.parseInt(sc.nextLine());
                 // animals.get(maleChoice).proCreate(animals.get(femaleChoice));
                 BabyFactory.proCreate(this, animals.get(horseMaleChoice), animals.get(horseFemaleChoice));
                 break;

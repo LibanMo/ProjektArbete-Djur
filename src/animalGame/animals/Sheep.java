@@ -2,10 +2,11 @@ package animalGame.animals;
 
 import animalGame.animals.models.Animal;
 
+import java.io.Serializable;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Sheep implements Animal {
+public class Sheep extends Animal implements Serializable {
     Sheep sheep;
     public String name;
     String type = "Sheep";
@@ -16,29 +17,29 @@ public class Sheep implements Animal {
     int decline;
     int age = 1;
     int maxAge = 12;
-    Scanner sc = new Scanner(System.in);
+
     String eatsOnly = "Wheat";
 
     public Sheep(String name){
         this.name = name;
     }
 
-    @Override
+
     public void setType(String type) {
         this.type = type;
     }
 
-    @Override
+
     public String getName() {
         return name;
     }
 
-    @Override
+
     public String animalType() {
         return type;
     }
 
-    @Override
+
     public void healthDecline() {
         Random random = new Random();
         int choice = random.nextInt(3)+1;
@@ -62,17 +63,17 @@ public class Sheep implements Animal {
 
     }
 
-    @Override
+
     public String getDecline() {
         return "-" + decline;
     }
 
-    @Override
+
     public void health() {
         System.out.println("Your Sheep " + name + " Health: " + health);
     }
 
-    @Override
+
     public void feed(String food) {
 
         if (food.equalsIgnoreCase(eatsOnly)){
@@ -95,28 +96,27 @@ public class Sheep implements Animal {
 
 
 
-    @Override
+
     public void isDead() {
         System.out.println("Your Sheep " + name + " is dead");
     }
 
-    @Override
     public void setGender(String gender) {
         this.gender = gender;
 
     }
 
-    @Override
+
     public String getGender() {
         return gender;
     }
 
-    @Override
+
     public Integer getHealth() {
         return  health;
     }
 
-    @Override
+
     public String showHealth() {
         if (health <= 0 ){
             isDead();
@@ -127,12 +127,11 @@ public class Sheep implements Animal {
         return health + "%";
     }
 
-    @Override
+
     public Integer getAge() {
         return age;
     }
 
-    @Override
     public String getType() {
         return type;
     }
