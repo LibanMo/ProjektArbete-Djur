@@ -48,9 +48,11 @@ public class Store implements Serializable {
 
     /**
      * DENNA METOD KOMMER AGERA SOM EN RIKTIG BUTIK.
-     * KUNDENS SALDO KOMMER JÄMFLÖRAS MED DET SOM SÄLJS PRIS.
-     * OM SPELARENS SALDO ÄR TILLRÄCKLIGT FORSTÄTTER BUTIKEN SOM FRÅGOR OM DJURETS NAMN OCH KÖN.
-     * TILLSLUT LÄGS SPELARENS DJUR I EN LISTA MED SAMMA OBJEKT SOM DJURETS SOM KÖPTES
+     * KUNDENS SALDO KOMMER JÄMFÖRA MED DET SOM SÄLJS PRIS.
+     * OM SPELARENS SALDO ÄR TILLRÄCKLIGT FORTSÄTTER BUTIKEN SOM FRÅGOR OM DJURETS NAMN OCH KÖN.
+     * TILL SLUT LÄGGS SPELARENS DJUR I EN LISTA MED SAMMA OBJEKT SOM DJURETS SOM KÖPTES
+     *
+     * @author Liban Mohamed
      */
 
     public void buyAnimal() {
@@ -227,6 +229,14 @@ public class Store implements Serializable {
 
     }
 
+    /**
+     * Denna metod kallas ifall spelaren skulle vilja köpa mat.
+     * Man får 3 alternativ på mat. När spelaren har valt mat
+     * Kollar butiken ifall saldot är tillräckligt fär att sedan dra av beloppet från spelaren plånbok
+     *
+     * @author Liban Mohamed
+     */
+
     public void buyFood() {
         System.out.println("Today in store we have ");
         System.out.println("1. Wheat [100]    2. Soy [150]    3. Corn [200]");
@@ -317,6 +327,14 @@ public class Store implements Serializable {
 
     }
 
+    /**
+     * Denna metoden är en metod som låter spelaren välja ett djur från sin lista
+     * för att sedan kunna sälja den, spelaren skall sedan få sin plånbok ökas med
+     * priset Denna klass väljer att erbjuda playern
+     *
+     * @author Liban Mohamed
+     */
+
     void sellAnimals() {
         if(player.animals.isEmpty()) {
             System.out.println("This Does not work");
@@ -382,6 +400,12 @@ public class Store implements Serializable {
         }
     }
 
+    /**
+     * Denna metoden använder sig sav en spelaren lista av djur för att sedan värdera dom.
+     * Därefter köper butiken djuren och fyller spelarens plånbok med den summa alla djur var värda
+     *
+     * @author Liban Mohamed
+     */
     public void sellAllAnimals() {
 
         for(Animal a : player.animals){

@@ -18,11 +18,19 @@ public class Game {
     Store store;
     Scanner scanner = new Scanner(System.in);
     String winnerName;
-    AnimalSavedInstance save;
+    int maxRounds = 30;
+    int minRounds = 5;
+    int minPlayers = 2;
+    int maxPlayers = 4;
+
     int currentRound;
 
 
-    // Konstruktor
+    /**
+     * I Game konstruktor matar spelaren antigen 1 för starta ett nytt spel.
+     * eller matar man in 2 för att kunna läsa in filen där tidigare spel har sparats
+     * @author Liban Mohamed
+     */
     public Game(){
         System.out.println("Hey Welcome\n"); // HÄLSING INNAN SPEL
         System.out.println("1. Start New Game   2. Load Game");
@@ -40,6 +48,12 @@ public class Game {
 
 }
 
+    /**
+     * I denna metoden läser man in tidigare skapade filer för att sedan kunna läsa av dom.
+     * det tidigare inmatade filen tas in i FileHandler.loadsaveGame.
+     * ifall filen inte skulle finnas får man ett felmeddelande om att filen inte existerar
+     * @author Liban Mohamed
+     */
     private void loadFromFile() {
         System.out.println("Choose a filename");
         String filename = scanner.next();
@@ -51,11 +65,17 @@ public class Game {
 
         }
         else{
+            System.out.println("The entered file does not exist");
             System.out.println("Exiting game...");
         }
 
     }
 
+    /**
+     * I denna metod sparar man spelet, det som sparats är listan av spelare i game.
+     * Samt sparar vi också ronderna man skall spela och den ronden man befinner sig i när spelet sparas
+     * @author Liban Mohamed
+     */
     private void saveToFile(){
         System.out.println("Choose a filename to save");
         String newFile = scanner.next();
@@ -67,15 +87,44 @@ public class Game {
     }
 
 
-    // HÄR INNE LIGGER SPELETS START MENY.
+    /**
+     * Denna metod fungerar som en hjälp metod fär att kunna hänvisa spelaren att mata in antalet spelare
+     * (2-4) som minimum och maximum,
+     * Därefter hänvisar vi spelaren om att hen ska mata in antalet rundor som ska spelas (5-30)
+     * Innan programmets slut kallas metoden createPlayers för att fortsätta med programmet.
+     * @author Liban Mohamed
+     */
 
     private void startMenu() {
         System.out.println("How many players are playing: ");
         users = scanner.nextInt();
+        if(users < minPlayers ){
+            System.out.println("You have entered to few players");
+            System.out.println("How many players are playing: ");
+            users = scanner.nextInt();
+        }
+        else if(users > maxPlayers){
+            System.out.println("You have entered to many players\"");
+            System.out.println("How many players are playing: ");
+            users = scanner.nextInt();
+        }
 
-        System.out.println("There is " + users + " players\n");
-        System.out.println("How many rounds would you like to play ");
-        rounds = scanner.nextInt();
+         System.out.println("There is " + users + " players\n");
+         System.out.println("How many rounds would you like to play (5-30) ");
+         rounds = scanner.nextInt();
+
+
+
+        if (rounds > maxRounds){
+            System.out.println("You have entered to many rounds");
+            System.out.println("How many rounds would you like to play (5-30)");
+            rounds = scanner.nextInt();
+        }
+        if(rounds < minRounds){
+            System.out.println("You have entered to few rounds");
+            System.out.println("How many rounds would you like to play (5-30)");
+            rounds = scanner.nextInt();
+        }
         System.out.println(rounds + " Rounds...\n");
 
         createPlayers();
@@ -86,6 +135,9 @@ public class Game {
 
     /**
      * DENNA METOD SKAPAR NYA SPELARE SEDAN STORAS DOM INNE HOS LISTAN AV TYP SPELARE
+     * Listan fylls på tills den tidigare inmatade värdet av users är lika med variablen a.
+     * När listan sedan fyllts på med spelare fortsätter den vidare.
+     * @author Liban Mohamed , Felah Hassan, Fahim Hadi
      */
 
     private void createPlayers() {
@@ -106,6 +158,10 @@ public class Game {
 
     /**
      * HÄR INNE VISAS SPELARE SOM ÄR SKAPADE
+     * SAMT VISAS OCKSÅ DERAS PENGAR SOM DOM FÅR VID SPELETS BÖRJAN
+     * DENNA PLÅNBOK ÄR DET MAN HANDLAR MED OCH SAMMA PLÅNBOK ÄR DET SOM AVGÖR VEM SOM VINNER
+     * DEN MED MEST PENGAR VID SPELETS SLUT VINNER
+     * @author Liban Mohamed, Felah Hassan, Fahim Hadi
      */
     private void showPlayers() {
         System.out.println("amount of players: " + players.size());
@@ -119,6 +175,18 @@ public class Game {
     }
 
 
+    /**
+     * Här inne börjar spelet där allt som spelaren kan göra med sina drag visas upp med en textrad
+     * Spelet körs så länge den tidigare inmatade variabeln currentrounds är lika med rounds
+     * som är antalet rundor man ska spela.
+     *
+     * Switch caset ser sedan till att spelaren val hanteras där varje case kallar en ny metod
+     * efter spelaren har gjort sitt drag kommer det gå vidare till nästa spelare i listan.
+     * När samtliga spelare har gjort sina drag kommer man sedan att öka med currentround med 1.
+     * Denna metod körs hela tiden tills alla rundor är färdig spelade.
+     *
+     *@author Liban Mohamed, Felah Hassan, Fahim Hadi
+     */
     public void nextMove() {
 
         // Hur ska jag få spelare separat från listan?
@@ -150,7 +218,7 @@ public class Game {
 
                         break;
                     case 3:
-
+                        p.showFood();
                         p.feedAnimal();
 
                         break;
@@ -180,7 +248,16 @@ public class Game {
         endGame();
     }// end of nextMove method
 
-
+    /**
+     * Denna metod är sker avgörandet på vem är dom som vann när spelet är färdig spelad.
+     * För varje spelare som är med tar man deras djur för att sälja dom till store klassen.
+     * När alla djur har sålts får spelaren sina pengar i sin plånbok för att sedan kunna
+     * jämföra med dom andra spelarna.
+     * Den med mest pengar sätts in i variabeln largest av typ int.
+     * Spelaren som vann skrivs ner i en textrad där namnet på spelaren och summan av pengar har i sin plånbok
+     *
+     * @author Liban Mohamed, Felah Hassan, Fahim Hadi
+     */
 
     void endGame() {
         if (this.store == null ){
@@ -205,6 +282,14 @@ public class Game {
         }
 
     }
+
+    /**
+     * Denna metod kallas när en spelare valt att spara spelet.
+     * Denna metoden serv till att samtliga spelare vet spelet har avslutas.
+     * Sedan avslutas hela programmet.
+     *
+     * @author Liban Mohamed
+     */
     void exit(){
         System.out.println("The Game is now saved");
         System.out.println("Exiting Game...");

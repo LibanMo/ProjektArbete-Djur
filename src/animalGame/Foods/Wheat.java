@@ -8,7 +8,12 @@ public class Wheat extends Food implements Serializable {
     String type = "Wheat";
 
 
-    @Override
+    /**
+     *
+     * @return djurtypen
+     *
+     * @author Felah Hassan
+     */
     public String getType() {
         return type;
     }
