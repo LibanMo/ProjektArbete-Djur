@@ -30,9 +30,15 @@ public abstract class Animal implements Serializable{
 
    public abstract String showHealth();
 
-   public abstract Integer getAge();
+   public abstract String getAge();
 
    public abstract String getType();
+
+   public abstract void animalAging();
+
+   public abstract Integer showAge();
+
+
 
 
 /**

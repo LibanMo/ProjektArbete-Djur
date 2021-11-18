@@ -338,7 +338,7 @@ public class Store implements Serializable {
             String whatType = player.animals.get(choice).getType();
             switch (whatType) {
                 case "Chicken":
-                    payOut = (chickenPrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).getAge() * 5);
+                    payOut = (chickenPrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).showAge() * 5);
                     player.animals.remove(choice);
                     System.out.println("The price for your Chicken is " + payOut);
                     int newer = player.cash + payOut;
@@ -346,7 +346,7 @@ public class Store implements Serializable {
                     break;
 
                 case "Sheep":
-                    payOut = (sheepPrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).getAge() * 5);
+                    payOut = (sheepPrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).showAge() * 5);
                     player.animals.remove(choice);
                     System.out.println("The price for your Sheep is " + payOut);
                     newer = player.cash + payOut;
@@ -354,7 +354,7 @@ public class Store implements Serializable {
                     break;
 
                 case "Goat":
-                    payOut = (goatPrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).getAge() * 5);
+                    payOut = (goatPrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).showAge() * 5);
                     player.animals.remove(choice);
                     System.out.println("The price for your Goat is " + payOut);
                     newer = player.cash + payOut;
@@ -362,7 +362,7 @@ public class Store implements Serializable {
                     break;
 
                 case "Cow":
-                    payOut = (cowPrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).getAge() * 5);
+                    payOut = (cowPrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).showAge() * 5);
                     player.animals.remove(choice);
                     System.out.println("The price for your Cow is " + payOut);
                     newer = player.cash + payOut;
@@ -370,7 +370,7 @@ public class Store implements Serializable {
                     break;
 
                 case "Horse":
-                    payOut = (horsePrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).getAge() * 5);
+                    payOut = (horsePrice * (player.animals.get(choice).getHealth()) / 100) - (player.animals.get(choice).showAge() * 5);
                     player.animals.remove(choice);
                     System.out.println("The price for your Horse is " + payOut);
                     newer = player.cash + payOut;
@@ -388,31 +388,31 @@ public class Store implements Serializable {
             String animalType = a.getType();
             switch(animalType){
                 case "Chicken":
-                    payOut = (chickenPrice * (a.getHealth()) / 100) - (a.getAge() * 5);
+                    payOut = (chickenPrice * (a.getHealth()) / 100) - (a.showAge() * 5);
                     int newer = player.cash + payOut;
                     player.setBalance(newer);
                     break;
 
                 case "Sheep":
-                    payOut = (sheepPrice * (a.getHealth()) / 100) - (a.getAge() * 5);
+                    payOut = (sheepPrice * (a.getHealth()) / 100) - (a.showAge() * 5);
                     newer = player.cash + payOut;
                     player.setBalance(newer);
                     break;
 
                 case "Goat":
-                    payOut = (goatPrice * (a.getHealth()) / 100) - (a.getAge() * 5);
+                    payOut = (goatPrice * (a.getHealth()) / 100) - (a.showAge() * 5);
                     newer = player.cash + payOut;
                     player.setBalance(newer);
                     break;
 
                 case "Cow":
-                    payOut = (cowPrice * (a.getHealth()) / 100) - (a.getAge() * 5);
+                    payOut = (cowPrice * (a.getHealth()) / 100) - (a.showAge() * 5);
                     newer = player.cash + payOut;
                     player.setBalance(newer);
                     break;
 
                 case "Horse":
-                    payOut = (horsePrice * (a.getHealth()) / 100) - (a.getAge() * 5);
+                    payOut = (horsePrice * (a.getHealth()) / 100) - (a.showAge() * 5);
                     newer = player.cash + payOut;
                     player.setBalance(newer);
                     break;

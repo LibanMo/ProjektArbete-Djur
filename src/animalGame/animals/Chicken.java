@@ -4,25 +4,23 @@ import animalGame.Player;
 import animalGame.animals.models.Animal;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Chicken extends Animal implements Serializable {
 
 
-    public String name;
-    Player player;
-    String type = "Chicken";
-    int health = 100;
-    String b = Integer.toString(health);
-    Boolean isAlive;
-    String gender;
-    Chicken chicken; // KALLA DENNA VARIABEL NÄR PROCREATE BLIR TILL ETT NYTT OBJEKT
+   private String name;
+   private Player player;
+   private String type = "Chicken";
+   private int health = 100;
+   private String b = Integer.toString(health);
+   private Boolean isAlive;
+   private String gender;
+   private Chicken chicken; // KALLA DENNA VARIABEL NÄR PROCREATE BLIR TILL ETT NYTT OBJEKT
 
-    int decline;
-    String eatsOnly = "Corn";
-    int age = 1;
+   private int decline;
+   private String eatsOnly = "Corn";
+   private int age = 1;
 
     public Chicken(String name) {
         this.name = name;
@@ -121,8 +119,8 @@ public class Chicken extends Animal implements Serializable {
     }
 
 
-    public Integer getAge() {
-        return age;
+    public String getAge() {
+        return "age: " + age;
     }
 
 
@@ -138,8 +136,15 @@ public class Chicken extends Animal implements Serializable {
 
     }
 
+    public void animalAging() {
+        age += 10;
+
+    }
 
 
+    public Integer showAge() {
+        return  age;
+    }
 
 
 }
