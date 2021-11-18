@@ -28,7 +28,12 @@ public class Player implements Serializable {
     ArrayList<Food> myFood = new ArrayList<Food>();
 
 
-// player.chickens.add()
+    /**
+     * Detta är player konstruktör
+     *
+     * @param name name hänvisar till name i fältet
+     *
+     */
 
 
     public Player(String name) {
@@ -36,20 +41,39 @@ public class Player implements Serializable {
 
     }
 
-
+    /**
+     * Denna metoden när en setter för att kunna ge spelaren plånbok ett nytt värde vid köp eller vid försäljning
+     * @param cash är den variabeln cash i fältet hänvisas till.
+     */
     public void setBalance(int cash) {
         this.cash = cash;
     }
 
-
+    /**
+     *
+     * @return Playerns pengar som den ahr att spela med
+     */
     public Integer getBalance() {
         return cash;
     }
+
+    /**
+     *
+     * @return Playerns namn
+     */
 
     public String getName() {
         return name;
     }
 
+
+    /**
+     * Detta ör en hashmap för att kunna visa spelaren vilka djur dom äger samt
+     * hälsan, ålder, namnet, könet och hur mycket den minskades senaste rundan
+     * @return null ifall listan skulle visa sig vara tom annars visas hashmappen.
+     *
+     * @author Liban Mohamed
+     */
     public Object getAnimals() {
         for (Animal animal : animals) {
             if (animal.getHealth() <= 0){
@@ -69,6 +93,10 @@ public class Player implements Serializable {
         return null;
     }
 
+    /**
+     * Denna metoden ser till att djuren spelaren äger kommer fp sin hälsa minskad vid varje runda.
+     * denna metoden kallas i gameklassen vid varje spelad runda
+     */
     void DeclineAnimal() {
         for (Animal animal : animals) {
             if (animals.isEmpty()) {
@@ -81,10 +109,21 @@ public class Player implements Serializable {
         }
     }
 
+    /**
+     * Denna metoden fyller på en lista med typ food med food.
+     * Denna metoden kallas i store klassen när man gör att köp av mat
+     * @param food är objektet som skall läggas in i listan av mat hos spelaren
+     *
+     * @author Liban Mohamed
+     */
+
     void addFood(Food food) {
         myFood.add(food);
     }
 
+    /**
+     * Denna metoden visar för spelaren om sin food som är lagrade i listan myFood
+     */
     void showFood() {
         for (Food food : myFood) {
             System.out.println(food.getType());
@@ -93,6 +132,13 @@ public class Player implements Serializable {
 
     //  HÄR INNE KOMMER JAG KUNNA MATA DJURET, DET SOM KRÄVS ÄR ETT SÄTT INDEX DJURET MED INT I FÖR ATT SEDAN VÄLJA DEN
 
+    /**
+     * Denna metod matar ett djur från en spelarens lista av djur
+     * Detta gör att man med hjälp av djurets index i listan
+     * Ifall man skulle ha djur men ingen mat får man en ett felmeddelande. Samma sak tvärtom
+     *
+     *@author Liban Mohamed
+     */
     void feedAnimal() {
         Scanner sc = new Scanner(System.in);
         if(animals.isEmpty()){
@@ -170,7 +216,14 @@ public class Player implements Serializable {
     }
     }
 
-
+    /**
+     * Här inne i denna metoden väljer spelaren två djur man vill ska procreate ett nytt barn.
+     * Man får se samtliga djur i listan för att sedan välja en hane och en hona för att starta processen.
+     * När man har valt sina två djur kallar man Babyfactorys metod procreate animals för att sedan visa spelaren
+     * ifall man får ett barn eller inte.
+     *
+     * @author Liban Mohamed
+     */
     public void proCreateAnimals() {
 
         Scanner sc = new Scanner(System.in);
@@ -388,7 +441,15 @@ public class Player implements Serializable {
 
         }
 
-        public void addBaby (Animal animal){
+    /**
+     * Denna metoden fyller på listan av djur med ett nyt djur som skapades vid procreate.
+     * Den används inne hos Babyfactory klassen
+     * @param animal är objektet djur om skal l läggas in i spelarens lista av djur
+     *
+     * @author Liban Mohamed
+     */
+
+    public void addBaby (Animal animal){
             animals.add(animal);
         }
 
@@ -398,6 +459,11 @@ public class Player implements Serializable {
         }
         }
 
+    /**
+     * Denna metoden kollar ifall djurens hälsa eller ålder är godkänt
+     * ifall något inte skulle vara godkänt tas objektet bort från spelaren lista av djurobjekt
+     * @author Liban Mohamed
+     */
         public void checkAnimalHealth(){
         for(Animal animal : animals){
             if (animal.getHealth() <= 0){
@@ -410,7 +476,13 @@ public class Player implements Serializable {
         }
         }
 
-        public void removeAnimalFromList(Animal animal){
+    /**
+     * Denna metod tar bort ett djur från listan av djurobjekt
+     * @param animal är det djur man vill få bort från listan.
+     * @author Liban Mohamed
+     */
+
+    public void removeAnimalFromList(Animal animal){
         animals.remove(animal);
 
         }
