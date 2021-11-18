@@ -4,7 +4,6 @@ import animalGame.animals.models.Animal;
 
 import java.io.Serializable;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Cow extends Animal implements Serializable {
 
@@ -122,13 +121,22 @@ public class Cow extends Animal implements Serializable {
     }
 
 
-    public Integer getAge() {
-        return age;
+    public String getAge() {
+        return "age: " + age;
     }
 
 
     public String getType() {
         return type;
     }
+
+    public void animalAging() {
+        age += 10;
+    }
+
+    public Integer showAge() {
+        return  age;
+    }
 }
+
 
