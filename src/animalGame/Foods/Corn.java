@@ -7,7 +7,12 @@ import java.io.Serializable;
 public class Corn extends Food implements Serializable {
     String type = "Corn";
 
-    @Override
+    /**
+     *
+     * @return djurtupen
+     *
+     * @author Fahim Hadi
+     */
     public String getType() {
         return type;
     }

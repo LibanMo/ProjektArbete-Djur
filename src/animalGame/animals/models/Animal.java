@@ -5,6 +5,8 @@ import java.io.Serializable;
 public abstract class Animal implements Serializable{
 
 
+    //***DOKUMENTATIONEN KRING DENNA KLASS FINNER NI HOS CHICKEN OBJEKTET
+
     public abstract void  setType(String type);
 
     public abstract String getName();

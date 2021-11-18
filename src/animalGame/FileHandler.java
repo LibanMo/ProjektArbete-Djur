@@ -31,6 +31,8 @@ public class FileHandler {
      * This method lets us save a new instance of SavedGame to a chosen file.
      * @param savedGame the instance to write to a file
      * @param fileName the filename to where we want to write the file
+     *
+     * @author Liban Mohamed
      */
     public static void saveGameRuntime(SavedGame savedGame, String fileName){
         try {
