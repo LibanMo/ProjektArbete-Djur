@@ -61,6 +61,7 @@ public class Player implements Serializable {
                 multipleValues.get(animal.animalType()).add(animal.getGender());
                 multipleValues.get(animal.animalType()).add(animal.showHealth());
                 multipleValues.get(animal.animalType()).add(animal.getDecline());
+                multipleValues.get(animal.animalType()).add(animal.getAge());
                 System.out.println(multipleValues);
             }
 
@@ -95,8 +96,12 @@ public class Player implements Serializable {
     void feedAnimal() {
         Scanner sc = new Scanner(System.in);
         if(animals.isEmpty()){
-            System.out.println("U dont hav");
+            System.out.println("Hey! :( ");
+            System.out.println("You don't have any Animals");
+            System.out.println("You have wasted your move");
+
         }
+        else {
 
         System.out.println("Which Animal would you want to feed");
         System.out.println("Enter the number next to your animal");
@@ -114,8 +119,10 @@ public class Player implements Serializable {
         switch (choice) {
             case 1:
                 if(myFood.isEmpty()){
-                    System.out.println("You dont have any food");
+                    System.out.println("You don't have any food");
+                    System.out.println("You have wasted your move...");
                 }
+
 
 
                 for (Food f : myFood) {
@@ -129,6 +136,10 @@ public class Player implements Serializable {
                 break;
 
             case 2:
+                if(myFood.isEmpty()){
+                    System.out.println("You don't have any food");
+                    System.out.println("You have wasted your move...");
+                }
                 animals.get(whoToFeed).feed("Soy");
                 for (Food f : myFood) {
                     if (f.getType().equalsIgnoreCase("Soy")) {
@@ -139,6 +150,10 @@ public class Player implements Serializable {
                 break;
 
             case 3:
+                if(myFood.isEmpty()){
+                    System.out.println("You don't have any food");
+                    System.out.println("You have wasted your move...");
+                }
                 animals.get(whoToFeed).feed("Corn");
                 for (Food f : myFood) {
                     if (f.getType().equalsIgnoreCase("Corn")) {
@@ -153,204 +168,257 @@ public class Player implements Serializable {
 
 
     }
-
-    public Animal myAnimals(){
-        if (animals.isEmpty()) {
-            return  null;
-        }
-
-        else {
-            for (Animal anim : animals){
-                return anim;
-
-            }
-        }
-        return  null;
-
     }
+
 
     public void proCreateAnimals() {
 
         Scanner sc = new Scanner(System.in);
+        if (animals.isEmpty()) {
+            System.out.println("You don't have any animals");
+            System.out.println("You have wasted your move");
+        } else if (animals.size() == 1) {
+            System.out.println("You only have one animal. it takes two animals to procreate ");
+            System.out.println("You have wasted your move");
+        } else {
 
-        System.out.println("Choose one animal type to procreate");
-        System.out.println("1. Chicken   2. Sheep   3. Goat   4. Cow   5. Horse");
-        int switcher = Integer.parseInt(sc.nextLine());
-        switch (switcher) {
-            case 1:
-                for (int i = 0; i < animals.size(); i++) {
-                    if (animals.get(i).getType().equalsIgnoreCase("Chicken")) {
-                        System.out.println(i + ": " + animals.get(i).animalType() + " Gender: " + animals.get(i).getGender());
-                    } // Här inne ska alla djur som finns med i listan utifrån den inmatade värdet
 
-                }
-                System.out.println("Choose one Male chicken, Enter the index next to the animal");
+            System.out.println("Choose one animal type to procreate");
+            System.out.println("1. Chicken   2. Sheep   3. Goat   4. Cow   5. Horse");
+            int switcher = Integer.parseInt(sc.nextLine());
+            try {
+                switch (switcher) {
 
-                for (int i = 0; i < animals.size(); i++) {
-                    if (animals.get(i).getType().equalsIgnoreCase("Chicken")) {
-                        if (animals.get(i).getGender().equalsIgnoreCase("Boy")) {
-                            System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                    case 1:
+                        for (int i = 0; i < animals.size(); i++) {
+                            if (animals.get(i).getType().equalsIgnoreCase("Chicken")) {
+                                System.out.println("All Chickens :");
+                                System.out.println(i + ": " + animals.get(i).animalType() + " Gender: " + animals.get(i).getGender());
+                            } // Här inne ska alla djur som finns med i listan utifrån den inmatade värdet
+
                         }
-                    }
-                }
-                int chickenMaleChoice = Integer.parseInt(sc.nextLine());
-                System.out.println("Choose a Female chicken, Enter the index next to the animal");
+                        System.out.println("Choose one Male chicken, Enter the index next to the animal");
 
-                for (int i = 0; i < animals.size(); i++) {
-                    if (animals.get(i).getType().equalsIgnoreCase("Chicken")) {
-                        if (animals.get(i).getGender().equalsIgnoreCase("Girl")) {
-                            System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                        for (int i = 0; i < animals.size(); i++) {
+                            if (animals.get(i).getType().equalsIgnoreCase("Chicken")) {
+                                if (animals.get(i).getGender().equalsIgnoreCase("Boy")) {
+                                    System.out.println("All Male Chickens:");
+                                    System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                                }
+                                else {
+                                    System.out.println("You don't have any Male Chickens");
+                                }
+                            }
                         }
-                    }
-                }
-                int chickenFemaleChoice = Integer.parseInt(sc.nextLine());
-                // animals.get(maleChoice).proCreate(animals.get(femaleChoice));
-                BabyFactory.proCreate(this, animals.get(chickenMaleChoice), animals.get(chickenFemaleChoice));
-                break;
+                        int chickenMaleChoice = Integer.parseInt(sc.nextLine());
+                        System.out.println("Choose a Female chicken, Enter the index next to the animal");
 
-
-            case 2:
-                for (int i = 0; i < animals.size(); i++) {
-                    if (animals.get(i).getType().equalsIgnoreCase("Sheep")) {
-                        System.out.println(i + ": " + animals.get(i).animalType() + " Gender: " + animals.get(i).getGender());
-                    } // Här inne ska alla djur som finns med i listan utifrån den inmatade värdet
-
-                }
-                System.out.println("Choose one Male Sheep, Enter the index next to the animal");
-
-                for (int i = 0; i < animals.size(); i++) {
-                    if (animals.get(i).getType().equalsIgnoreCase("Sheep")) {
-                        if (animals.get(i).getGender().equalsIgnoreCase("Boy")) {
-                            System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                        for (int i = 0; i < animals.size(); i++) {
+                            if (animals.get(i).getType().equalsIgnoreCase("Chicken")) {
+                                if (animals.get(i).getGender().equalsIgnoreCase("Girl")) {
+                                    System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                                }
+                                else {
+                                    System.out.println("You don't have any Female Chickens");
+                                }
+                            }
                         }
-                    }
-                }
-                int sheepMaleChoice = Integer.parseInt(sc.nextLine());
-                System.out.println("Choose a Female Sheep, Enter the index next to the animal");
+                        int chickenFemaleChoice = Integer.parseInt(sc.nextLine());
+                        // animals.get(maleChoice).proCreate(animals.get(femaleChoice));
+                        BabyFactory.proCreate(this, animals.get(chickenMaleChoice), animals.get(chickenFemaleChoice));
+                        break;
 
-                for (int i = 0; i < animals.size(); i++) {
-                    if (animals.get(i).getType().equalsIgnoreCase("Sheep")) {
-                        if (animals.get(i).getGender().equalsIgnoreCase("Girl")) {
-                            System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+
+                    case 2:
+                        for (int i = 0; i < animals.size(); i++) {
+                            if (animals.get(i).getType().equalsIgnoreCase("Sheep")) {
+                                System.out.println("All Your Sheeps: ");
+                                System.out.println(i + ": " + animals.get(i).animalType() + " Gender: " + animals.get(i).getGender());
+                            } // Här inne ska alla djur som finns med i listan utifrån den inmatade värdet
+
                         }
-                    }
-                }
-                int sheepFemaleChoice = Integer.parseInt(sc.nextLine());
-                // animals.get(maleChoice).proCreate(animals.get(femaleChoice));
-                BabyFactory.proCreate(this, animals.get(sheepMaleChoice), animals.get(sheepFemaleChoice));
+                        System.out.println("Choose one Male Sheep, Enter the index next to the animal");
 
-                break;
-
-            case 3:
-                for (int i = 0; i < animals.size(); i++) {
-                    if (animals.get(i).getType().equalsIgnoreCase("Goat")) {
-                        System.out.println(i + ": " + animals.get(i).animalType() + " Gender: " + animals.get(i).getGender());
-                    } // Här inne ska alla djur som finns med i listan utifrån den inmatade värdet
-
-                }
-                System.out.println("Choose one Male Goat, Enter the index next to the animal");
-
-                for (int i = 0; i < animals.size(); i++) {
-                    if (animals.get(i).getType().equalsIgnoreCase("Goat")) {
-                        if (animals.get(i).getGender().equalsIgnoreCase("Boy")) {
-                            System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                        for (int i = 0; i < animals.size(); i++) {
+                            if (animals.get(i).getType().equalsIgnoreCase("Sheep")) {
+                                if (animals.get(i).getGender().equalsIgnoreCase("Boy")) {
+                                    System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                                }
+                                else {
+                                    System.out.println("You don't have any Male Sheeps");
+                                }
+                            }
                         }
-                    }
-                }
-                int goatMaleChoice = Integer.parseInt(sc.nextLine());;
-                System.out.println("Choose a Female Goat, Enter the index next to the animal");
+                        int sheepMaleChoice = Integer.parseInt(sc.nextLine());
+                        System.out.println("Choose a Female Sheep, Enter the index next to the animal");
 
-                for (int i = 0; i < animals.size(); i++) {
-                    if (animals.get(i).getType().equalsIgnoreCase("Goat")) {
-                        if (animals.get(i).getGender().equalsIgnoreCase("Girl")) {
-                            System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                        for (int i = 0; i < animals.size(); i++) {
+                            if (animals.get(i).getType().equalsIgnoreCase("Sheep")) {
+                                if (animals.get(i).getGender().equalsIgnoreCase("Girl")) {
+                                    System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                                }
+                                else {
+                                    System.out.println("You don't have any Female Sheeps");
+                                }
+                            }
                         }
-                    }
-                }
-                int goatFemaleChoice = Integer.parseInt(sc.nextLine());
-                // animals.get(maleChoice).proCreate(animals.get(femaleChoice));
-                BabyFactory.proCreate(this, animals.get(goatMaleChoice), animals.get(goatFemaleChoice));
-                break;
+                        int sheepFemaleChoice = Integer.parseInt(sc.nextLine());
+                        // animals.get(maleChoice).proCreate(animals.get(femaleChoice));
+                        BabyFactory.proCreate(this, animals.get(sheepMaleChoice), animals.get(sheepFemaleChoice));
 
-            case 4:
-                for (int i = 0; i < animals.size(); i++) {
-                    if (animals.get(i).getType().equalsIgnoreCase("Cow")) {
-                        System.out.println(i + ": " + animals.get(i).animalType() + " Gender: " + animals.get(i).getGender());
-                    } // Här inne ska alla djur som finns med i listan utifrån den inmatade värdet
+                        break;
 
-                }
-                System.out.println("Choose one Male Cow, Enter the index next to the animal");
+                    case 3:
+                        for (int i = 0; i < animals.size(); i++) {
+                            if (animals.get(i).getType().equalsIgnoreCase("Goat")) {
+                                System.out.println(i + ": " + animals.get(i).animalType() + " Gender: " + animals.get(i).getGender());
+                            } // Här inne ska alla djur som finns med i listan utifrån den inmatade värdet
 
-                for (int i = 0; i < animals.size(); i++) {
-                    if (animals.get(i).getType().equalsIgnoreCase("Cow")) {
-                        if (animals.get(i).getGender().equalsIgnoreCase("Boy")) {
-                            System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
                         }
-                    }
-                }
-                int cowMaleChoice = Integer.parseInt(sc.nextLine());
-                System.out.println("Choose a Female Cow, Enter the index next to the animal");
+                        System.out.println("Choose one Male Goat, Enter the index next to the animal");
 
-                for (int i = 0; i < animals.size(); i++) {
-                    if (animals.get(i).getType().equalsIgnoreCase("Cow")) {
-                        if (animals.get(i).getGender().equalsIgnoreCase("Girl")) {
-                            System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                        for (int i = 0; i < animals.size(); i++) {
+                            if (animals.get(i).getType().equalsIgnoreCase("Goat")) {
+                                if (animals.get(i).getGender().equalsIgnoreCase("Boy")) {
+                                    System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                                }
+                                else {
+                                    System.out.println("You don't have any Male Goats");
+                                }
+                            }
                         }
-                    }
-                }
-                int cowFemaleChoice = Integer.parseInt(sc.nextLine());
-                // animals.get(maleChoice).proCreate(animals.get(femaleChoice));
-                BabyFactory.proCreate(this, animals.get(cowMaleChoice), animals.get(cowFemaleChoice));
-                break;
+                        int goatMaleChoice = Integer.parseInt(sc.nextLine());
+                        ;
+                        System.out.println("Choose a Female Goat, Enter the index next to the animal");
 
-            case 5:
-                for (int i = 0; i < animals.size(); i++) {
-                    if (animals.get(i).getType().equalsIgnoreCase("Horse")) {
-                        System.out.println(i + ": " + animals.get(i).animalType() + " Gender: " + animals.get(i).getGender());
-                    } // Här inne ska alla djur som finns med i listan utifrån den inmatade värdet
-
-                }
-                System.out.println("Choose one Male Horse, Enter the index next to the animal");
-
-                for (int i = 0; i < animals.size(); i++) {
-                    if (animals.get(i).getType().equalsIgnoreCase("Horse")) {
-                        if (animals.get(i).getGender().equalsIgnoreCase("Boy")) {
-                            System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                        for (int i = 0; i < animals.size(); i++) {
+                            if (animals.get(i).getType().equalsIgnoreCase("Goat")) {
+                                if (animals.get(i).getGender().equalsIgnoreCase("Girl")) {
+                                    System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                                }
+                                else {
+                                    System.out.println("You don't have any Female Goats");
+                                }
+                            }
                         }
-                    }
-                }
-                int horseMaleChoice =Integer.parseInt(sc.nextLine());
-                System.out.println("Choose a Female Horse, Enter the index next to the animal");
+                        int goatFemaleChoice = Integer.parseInt(sc.nextLine());
+                        // animals.get(maleChoice).proCreate(animals.get(femaleChoice));
+                        BabyFactory.proCreate(this, animals.get(goatMaleChoice), animals.get(goatFemaleChoice));
+                        break;
 
-                for (int i = 0; i < animals.size(); i++) {
-                    if (animals.get(i).getType().equalsIgnoreCase("Horse")) {
-                        if (animals.get(i).getGender().equalsIgnoreCase("Girl")) {
-                            System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                    case 4:
+                        for (int i = 0; i < animals.size(); i++) {
+                            if (animals.get(i).getType().equalsIgnoreCase("Cow")) {
+                                System.out.println(i + ": " + animals.get(i).animalType() + " Gender: " + animals.get(i).getGender());
+                            } // Här inne ska alla djur som finns med i listan utifrån den inmatade värdet
+
                         }
-                    }
-                }
-                int horseFemaleChoice = Integer.parseInt(sc.nextLine());
-                // animals.get(maleChoice).proCreate(animals.get(femaleChoice));
-                BabyFactory.proCreate(this, animals.get(horseMaleChoice), animals.get(horseFemaleChoice));
-                break;
+                        System.out.println("Choose one Male Cow, Enter the index next to the animal");
 
+                        for (int i = 0; i < animals.size(); i++) {
+                            if (animals.get(i).getType().equalsIgnoreCase("Cow")) {
+                                if (animals.get(i).getGender().equalsIgnoreCase("Boy")) {
+                                    System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                                }
+                                else {
+                                    System.out.println("You don't have any Male Cows");
+                                }
+                            }
+                        }
+                        int cowMaleChoice = Integer.parseInt(sc.nextLine());
+                        System.out.println("Choose a Female Cow, Enter the index next to the animal");
+
+                        for (int i = 0; i < animals.size(); i++) {
+                            if (animals.get(i).getType().equalsIgnoreCase("Cow")) {
+                                if (animals.get(i).getGender().equalsIgnoreCase("Girl")) {
+                                    System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                                }
+                                else {
+                                    System.out.println("You don't have any Female Cow");
+                                }
+                            }
+                        }
+                        int cowFemaleChoice = Integer.parseInt(sc.nextLine());
+                        // animals.get(maleChoice).proCreate(animals.get(femaleChoice));
+                        BabyFactory.proCreate(this, animals.get(cowMaleChoice), animals.get(cowFemaleChoice));
+                        break;
+
+                    case 5:
+                        for (int i = 0; i < animals.size(); i++) {
+                            if (animals.get(i).getType().equalsIgnoreCase("Horse")) {
+                                System.out.println(i + ": " + animals.get(i).animalType() + " Gender: " + animals.get(i).getGender());
+                            } // Här inne ska alla djur som finns med i listan utifrån den inmatade värdet
+
+                        }
+                        System.out.println("Choose one Male Horse, Enter the index next to the animal");
+
+                        for (int i = 0; i < animals.size(); i++) {
+                            if (animals.get(i).getType().equalsIgnoreCase("Horse")) {
+                                if (animals.get(i).getGender().equalsIgnoreCase("Boy")) {
+                                    System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                                }
+                                System.out.println("You don't have any Male Horses");
+
+                            }
+                        }
+                        int horseMaleChoice = Integer.parseInt(sc.nextLine());
+                        System.out.println("Choose a Female Horse, Enter the index next to the animal");
+
+                        for (int i = 0; i < animals.size(); i++) {
+                            if (animals.get(i).getType().equalsIgnoreCase("Horse")) {
+                                if (animals.get(i).getGender().equalsIgnoreCase("Girl")) {
+                                    System.out.println(i + ": " + animals.get(i).getName() + " Age: " + animals.get(i).getAge() + " Gender: " + animals.get(i).getGender());
+                                }
+                                System.out.println("You don't have any Female Horses ");
+
+                            }
+                        }
+                        int horseFemaleChoice = Integer.parseInt(sc.nextLine());
+                        // animals.get(maleChoice).proCreate(animals.get(femaleChoice));
+                        BabyFactory.proCreate(this, animals.get(horseMaleChoice), animals.get(horseFemaleChoice));
+                        break;
+
+                }
+
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        }
+
+        public void addBaby (Animal animal){
+            animals.add(animal);
+        }
+
+        public void agingPlayerAnimals(){
+        for(Animal a : animals){
+            a.animalAging();
+        }
+        }
+
+        public void checkAnimalHealth(){
+        for(Animal animal : animals){
+            if (animal.getHealth() <= 0){
+                removeAnimalFromList(animal);
+        }
+            if (animal.showAge() >= 100 ){
+                removeAnimalFromList(animal);
+            }
+
+        }
+        }
+
+        public void removeAnimalFromList(Animal animal){
+        animals.remove(animal);
 
         }
 
 
     }
 
-    public void addBaby(Animal animal) {
-        animals.add(animal);
-    }
 
-
-
-
-
-
-
-}
 
 
 

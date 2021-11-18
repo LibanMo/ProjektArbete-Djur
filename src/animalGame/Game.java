@@ -72,6 +72,7 @@ public class Game {
     private void startMenu() {
         System.out.println("How many players are playing: ");
         users = scanner.nextInt();
+
         System.out.println("There is " + users + " players\n");
         System.out.println("How many rounds would you like to play ");
         rounds = scanner.nextInt();
@@ -128,8 +129,10 @@ public class Game {
             for (Player p : players) {
                 System.out.println("\n" + p.name + " Make your move " + p.getBalance()+ "\n");
                 System.out.print("----------------------------->");
+                p.agingPlayerAnimals();
+                p.checkAnimalHealth();
                 p.getAnimals();
-                p.showFood();
+
 
                 System.out.println("\n");
                 System.out.println("1. Buy an Animal   2. Buy Foods   3. Feed animal   4. Sell Animal   5. Procreate Animal    6. Save Game");
@@ -157,7 +160,8 @@ public class Game {
                         break;
 
                     case 5:
-                        p.proCreateAnimals(); // *WAS PLAYER.PROCREATEANIMALS() BEFORE
+
+                        p.proCreateAnimals();
                         break;
 
                     case 6:
